@@ -1950,6 +1950,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -37327,37 +37328,34 @@ var staticRenderFns = [
                   }
                 }),
                 _vm._v(" "),
-                _c("label", { attrs: { for: "username_input" } }, [
-                  _vm._v("Your username")
-                ]),
+                _c(
+                  "label",
+                  { staticClass: "active", attrs: { for: "username_input" } },
+                  [_vm._v("Your username")]
+                ),
                 _vm._v(" "),
-                _c("span", { staticClass: "helper-text left" }, [
-                  _vm._v("You can get recognized")
-                ])
+                _c(
+                  "span",
+                  { staticClass: "helper-text grey-text text-darken-2 left" },
+                  [_vm._v("You can get recognized")]
+                )
               ]),
               _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "input-field col s12 m6",
-                  staticStyle: { display: "none" }
-                },
-                [
-                  _c("input", {
-                    staticClass: "white-text",
-                    attrs: {
-                      id: "response_to_input",
-                      type: "text",
-                      name: "response_to",
-                      "data-length": "10"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "response_to_input" } }, [
-                    _vm._v("Response to")
-                  ])
-                ]
-              ),
+              _c("div", { staticClass: "input-field col s12 m6 hide" }, [
+                _c("input", {
+                  staticClass: "white-text",
+                  attrs: {
+                    id: "response_to_input",
+                    type: "text",
+                    name: "response_to",
+                    "data-length": "10"
+                  }
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "response_to_input" } }, [
+                  _vm._v("Response to")
+                ])
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-field col s12" }, [
                 _c("textarea", {
@@ -37468,9 +37466,11 @@ var staticRenderFns = [
                   }
                 }),
                 _vm._v(" "),
-                _c("label", { attrs: { for: "username_input" } }, [
-                  _vm._v("Your username")
-                ]),
+                _c(
+                  "label",
+                  { staticClass: "active", attrs: { for: "username_input" } },
+                  [_vm._v("Your username")]
+                ),
                 _vm._v(" "),
                 _c(
                   "span",
@@ -37507,42 +37507,6 @@ var staticRenderFns = [
                 _vm._v(" "),
                 _c("label", { attrs: { for: "subject_text_input" } }, [
                   _vm._v("Subject text")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-field col s12" }, [
-                _c("div", { staticClass: "file-field input-field" }, [
-                  _c("div", { staticClass: "btn" }, [
-                    _c("span", [_vm._v("File")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      attrs: {
-                        id: "file_array_input",
-                        type: "file",
-                        name: "file_array_input",
-                        multiple: ""
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "file-path-wrapper" }, [
-                    _c("input", {
-                      staticClass: "file-path validate white-text",
-                      attrs: {
-                        id: "file_path",
-                        type: "text",
-                        name: "file_array"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        staticClass: "helper-text grey-text text-darken-2 left"
-                      },
-                      [_vm._v("Upload up to three files")]
-                    )
-                  ])
                 ])
               ]),
               _vm._v(" "),

@@ -8,10 +8,10 @@
                 <div class="row">
                     <div class="input-field col s12 m6">
                         <input id="username_input" class="white-text" type="text" name="username" value="Anonymous" data-length="20">
-                        <label for="username_input">Your username</label>
-                        <span class="helper-text left">You can get recognized</span>
+                        <label class="active" for="username_input">Your username</label>
+                        <span class="helper-text grey-text text-darken-2 left">You can get recognized</span>
                     </div>
-                    <div class="input-field col s12 m6" style="display: none;">
+                    <div class="input-field col s12 m6 hide">
                         <input id="response_to_input" class="white-text" type="text" name="response_to" data-length="10">
                         <label for="response_to_input">Response to</label>
                     </div>
