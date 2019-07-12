@@ -37,7 +37,7 @@ class BoardController extends Controller
 
         $boards = parent::getAllBoards();
 
-        $threads = $board->threads()->latest()->paginate(1);
+        $threads = $board->threads()->latest()->paginate(5);
 
         return view('board.show', compact('boards', 'board', 'threads'));
     }

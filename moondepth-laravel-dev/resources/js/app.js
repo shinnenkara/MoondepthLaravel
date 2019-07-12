@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+
 require('./init');
 require('./materialize.min');
 

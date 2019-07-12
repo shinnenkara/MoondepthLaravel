@@ -9,17 +9,17 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Styles -->
+    <link href="{{ URL::asset('css/materialize.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
+
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ URL::asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
-
-    <!-- Styles -->
-    <link href="{{ URL::asset('css/materialize.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body class="bg-dark text-white">
     <div id="app">
@@ -28,7 +28,7 @@
                 <div class="container">
                     <div class="nav-wrapper">
                         <div class="row">
-                            <div class="col s8 m8 offset-m1">
+                            <div class="col s12 m10 offset-m1">
                                 <a href="#" data-target="nav-mobile" class="top-nav sidenav-trigger full hide-on-large-only" style="transform: translateX(0px);">
                                 <i class="material-icons">menu</i></a>
                                 <a id="logo-container" href="{{ route('welcome.index') }}" class="brand-logo" style="display: flex">
@@ -37,9 +37,7 @@
                                 </a>
                             </div>
 
-                            <div class="hide-on-small-only" id="navbarSupportedContent">
-
-                                {{-- 
+                            {{-- <div class="hide-on-small-only" id="navbarSupportedContent">
                                 <!-- Right Side Of Navbar -->
                                 <ul class="navbar-nav ml-auto">
                                     <!-- Authentication Links -->
@@ -71,9 +69,8 @@
                                             </div>
                                         </li>
                                     @endguest
-                                </ul> 
-                                --}}
-                            </div>
+                                </ul>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

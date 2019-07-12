@@ -47,11 +47,11 @@
                                 <h5 class="content">No. {{ $message->id }}</h5></a>
                         </div>
                         <div class="message-body">
-                            
+
                             <div class="container">
                                 <h5>{{ $message->text }}</h5>
                             </div>
-                            
+
                         </div>
                     </div>
                     @endforeach
@@ -60,6 +60,6 @@
         </div>
         @endforeach
     </div>
-    <div id="pages" class="container center">{{ $threads->links() }}</div>
+    <div id="pages" class="container center">{{ $threads->links('vendor.pagination.materialize') }}</div>
 </div>
 @endsection
