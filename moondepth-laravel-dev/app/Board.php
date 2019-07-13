@@ -33,6 +33,15 @@ class Board extends Model
     protected $keyType = 'string';
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'amount_of_threads',
+    ];
+
+    /**
      * Get the threads for the defined board.
      */
     public function threads()

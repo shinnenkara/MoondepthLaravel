@@ -29,6 +29,31 @@ class BoardController extends Controller
     }
 
     /**
+     * Store the new application thread and redirect to @show.
+     *
+     * @store \App\Thread
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function store(Board $board) {
+
+        $data = request()->validate([
+            // 'username' => 'required',
+            'topic' => 'required',
+            'subject_text' => 'required'
+        ]);
+
+        Thread::create([
+            'bid' => $board->headline,
+            'uid' => 1,
+            'topic' => $data['topic'],
+            'subject_text' => $data['subject_text']
+        ]);
+        $board->update(['amount_of_threads' => ++$board->amount_of_threads]);
+
+        return redirect(route('board.show', ['board' => $board->headline]));
+    }
+
+    /**
      * Show the application board.
      *
      * @return \Illuminate\Contracts\Support\Renderable
@@ -37,7 +62,7 @@ class BoardController extends Controller
 
         $boards = parent::getAllBoards();
 
-        $threads = $board->threads()->latest()->paginate(5);
+        $threads = $board->threads()->latest('updated_at')->paginate(5);
 
         return view('board.show', compact('boards', 'board', 'threads'));
     }

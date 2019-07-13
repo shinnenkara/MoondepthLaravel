@@ -16,5 +16,7 @@ Auth::routes();
 Route::get('/', 'WelcomeController@index')->name('welcome.index');
 
 Route::get('/board/{board}', 'BoardController@show')->name('board.show');
+Route::post('/board/{board}', 'BoardController@store')->name('board.store');
 
 Route::get('/board/{board}/thread/{thread}', 'ThreadController@show')->name('thread.show');
+Route::post('/board/{board}/thread/{thread}', 'ThreadController@store')->name('thread.store');

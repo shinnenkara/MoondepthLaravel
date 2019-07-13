@@ -21,6 +21,15 @@ class Thread extends Model
     // protected $primaryKey = 'id';
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'bid', 'uid', 'topic', 'subject_text', 'amount_of_messages', 'amount_of_documents',
+    ];
+
+    /**
      * Get the board that owns the thread.
      */
     public function board()

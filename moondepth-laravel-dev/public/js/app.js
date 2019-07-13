@@ -1843,33 +1843,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -1906,46 +1879,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -37272,131 +37205,14 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container center", attrs: { id: "message-creation" } },
-    [
-      _c("button", {
-        staticClass: "waves-effect waves-light grey darken-3 btn-large",
-        attrs: { id: "message-creation-button" },
-        domProps: { textContent: _vm._s(_vm.buttonText) },
-        on: { click: _vm.creationToggle }
-      }),
-      _vm._v(" "),
-      _vm._m(0)
-    ]
-  )
+  return _c("button", {
+    staticClass: "waves-effect waves-light grey darken-3 btn-large",
+    attrs: { id: "message-creation-button" },
+    domProps: { textContent: _vm._s(_vm.buttonText) },
+    on: { click: _vm.creationToggle }
+  })
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "container white-text center",
-        staticStyle: {
-          display: "none",
-          width: "50%",
-          padding: "1.5rem .75rem"
-        },
-        attrs: { id: "shadow" }
-      },
-      [
-        _c(
-          "form",
-          {
-            staticClass: "col s12",
-            attrs: {
-              id: "message-form",
-              method: "post",
-              action: "WebServer/php/SubmitForm"
-            }
-          },
-          [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "input-field col s12 m6" }, [
-                _c("input", {
-                  staticClass: "white-text",
-                  attrs: {
-                    id: "username_input",
-                    type: "text",
-                    name: "username",
-                    value: "Anonymous",
-                    "data-length": "20"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  { staticClass: "active", attrs: { for: "username_input" } },
-                  [_vm._v("Your username")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  { staticClass: "helper-text grey-text text-darken-2 left" },
-                  [_vm._v("You can get recognized")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-field col s12 m6 hide" }, [
-                _c("input", {
-                  staticClass: "white-text",
-                  attrs: {
-                    id: "response_to_input",
-                    type: "text",
-                    name: "response_to",
-                    "data-length": "10"
-                  }
-                }),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "response_to_input" } }, [
-                  _vm._v("Response to")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-field col s12" }, [
-                _c("textarea", {
-                  staticClass: "materialize-textarea white-text",
-                  attrs: {
-                    id: "message_text_input",
-                    name: "message_text",
-                    "data-length": "120"
-                  }
-                }),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "message_text_input" } }, [
-                  _vm._v("Message text")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-field col s12" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "white-text waves-effect waves-light grey darken-3 btn-large",
-                    attrs: {
-                      id: "submit_input",
-                      type: "submit",
-                      name: "submit",
-                      value: "send"
-                    }
-                  },
-                  [_vm._v("Send")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "submit-check col s12" })
-            ])
-          ]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -37418,123 +37234,14 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container center", attrs: { id: "thread-creation" } },
-    [
-      _c("button", {
-        staticClass: "waves-effect waves-light grey darken-3 btn-large",
-        attrs: { id: "thread-creation-button" },
-        domProps: { textContent: _vm._s(_vm.buttonText) },
-        on: { click: _vm.creationToggle }
-      }),
-      _vm._v(" "),
-      _vm._m(0)
-    ]
-  )
+  return _c("button", {
+    staticClass: "waves-effect waves-light grey darken-3 btn-large",
+    attrs: { id: "thread-creation-button" },
+    domProps: { textContent: _vm._s(_vm.buttonText) },
+    on: { click: _vm.creationToggle }
+  })
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "container white-text center", attrs: { id: "shadow" } },
-      [
-        _c(
-          "form",
-          {
-            staticClass: "col s12",
-            attrs: {
-              id: "thread-form",
-              method: "post",
-              action: "WebServer/php/SubmitForm"
-            }
-          },
-          [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "input-field col s12 m6" }, [
-                _c("input", {
-                  staticClass: "white-text",
-                  attrs: {
-                    id: "username_input",
-                    type: "text",
-                    value: "Anonymous",
-                    name: "username",
-                    "data-length": "20"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  { staticClass: "active", attrs: { for: "username_input" } },
-                  [_vm._v("Your username")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  { staticClass: "helper-text grey-text text-darken-2 left" },
-                  [_vm._v("You can get recognized")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-field col s12 m6" }, [
-                _c("input", {
-                  staticClass: "white-text",
-                  attrs: {
-                    id: "topic_input",
-                    type: "text",
-                    name: "topic",
-                    "data-length": "40"
-                  }
-                }),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "topic_input" } }, [
-                  _vm._v("Topic")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-field col s12" }, [
-                _c("textarea", {
-                  staticClass: "materialize-textarea white-text",
-                  attrs: {
-                    id: "subject_text_input",
-                    name: "subject_text",
-                    "data-length": "120"
-                  }
-                }),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "subject_text_input" } }, [
-                  _vm._v("Subject text")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-field col s12" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "white-text waves-effect waves-light grey darken-3 btn-large",
-                    attrs: {
-                      id: "submit_input",
-                      type: "submit",
-                      name: "submit",
-                      value: "send"
-                    }
-                  },
-                  [_vm._v("Send")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "submit-check col s12" })
-            ])
-          ]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -49926,6 +49633,7 @@ __webpack_require__.r(__webpack_exports__);
 (function ($) {
   $(function () {
     $('.sidenav').sidenav();
+    $('input#username_input, input#topic_input, textarea#subject_text_input').characterCounter();
   }); // end of document ready
 })(jQuery); // end of jQuery name space
 

@@ -21,6 +21,15 @@ class Message extends Model
     // protected $primaryKey = 'id';
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'tid', 'uid', 'response_to', 'text', 'amount_of_documents',
+    ];
+
+    /**
      * Get the thread that owns the message.
      */
     public function thread()
