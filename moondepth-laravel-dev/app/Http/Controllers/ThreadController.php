@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 use App\Thread;
 use App\Message;
+use App\MessageFile;
+use Illuminate\Support\Facades\Storage;
 
 class ThreadController extends Controller
 {
@@ -28,14 +31,13 @@ class ThreadController extends Controller
 
         $data = request()->validate([
             // 'username' => 'required',
-            'message_text' => 'required'
+            'message_text' => 'required',
         ]);
 
-        if(request('response_to')) {
-            $response_to = ['response_to' => request('response_to')->validate([
-                    'response_to' => 'numeric'
-                ])
-            ];
+        if(null !== request('response_to')) {
+            $response_to = request()->validate([
+                'response_to' => 'numeric'
+            ]);
         } else {
             $response_to = [];
         }
@@ -46,8 +48,30 @@ class ThreadController extends Controller
             'text' => $data['message_text']
         ];
 
-        Message::create(array_merge($message_data, $response_to));
+        $message = Message::create(array_merge($message_data, $response_to));
         $thread->update(['amount_of_messages' => ++$thread->amount_of_messages]);
+
+        if(null !== request('file_input')) {
+            $requested_file = request()->validate([
+                'file_input' => 'image'
+            ]);
+            $image_mime_type = $requested_file['file_input']->getClientMimeType();
+            // $image_path = $requested_file['file_input']->storeAs('active-threads', uniqid("message-img-"), 's3');
+            $image_path = Storage::disk('s3')->putFileAs('active-threads', $requested_file['file_input'], uniqid("message-img-"), 'public');
+            $image_full_path = $image_path . '.' . explode('/', $image_mime_type)[1];
+            $image_original_name = $requested_file['file_input']->getClientOriginalName();
+            $image_size = $requested_file['file_input']->getClientSize();
+            $file_data = [
+                'mid' => $message->id,
+                's3_path' => $image_path,
+                's3_full_path' => $image_full_path,
+                'original_name' => $image_original_name,
+                'mime_type' => $image_mime_type,
+                'size' => $image_size
+            ];
+            $file = MessageFile::create($file_data);
+        } else {
+        }
 
         return redirect(route('thread.show', ['board' => $board_headline, 'thread' => $thread->id]));
     }

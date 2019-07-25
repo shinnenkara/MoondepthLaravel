@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Message extends Model
+class File extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'messages';
+    protected $table = 'files';
 
     /**
      * The primary key associated with the table.
@@ -26,11 +26,11 @@ class Message extends Model
      * @var array
      */
     protected $fillable = [
-        'tid', 'uid', 'response_to', 'text', 'amount_of_documents',
+        'tid', 'mid', 's3_path', 'original_name', 'mime_type', 'size'
     ];
 
     /**
-     * Get the thread that owns the message.
+     * Get the thread that owns the file.
      */
     public function thread()
     {
@@ -38,18 +38,10 @@ class Message extends Model
     }
 
     /**
-     * Get the user that owns the message.
+     * Get the message that owns the file.
      */
-    public function user()
+    public function message()
     {
-        return $this->belongsTo('\App\User', 'uid');
-    }
-
-    /**
-     * Get the files for the defined message.
-     */
-    public function files()
-    {
-        return $this->hasMany('\App\MessageFile', "mid");
+        return $this->belongsTo('\App\Message', 'mid');
     }
 }

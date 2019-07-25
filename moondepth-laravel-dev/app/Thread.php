@@ -52,4 +52,12 @@ class Thread extends Model
     {
         return $this->hasMany('\App\Message', "tid");
     }
+
+    /**
+     * Get the files for the defined thread.
+     */
+    public function files()
+    {
+        return $this->hasMany('\App\ThreadFile', "tid");
+    }
 }

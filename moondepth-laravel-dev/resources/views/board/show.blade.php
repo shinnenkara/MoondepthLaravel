@@ -8,7 +8,11 @@
 <div id="thread-creation" class="container center">
     <create-thread></create-thread>
     <div id="shadow" class="container white-text center">
-        <form id="thread-form" class="col s12" method="POST" action="{{ route('board.store', ['board' => $board->headline]) }}">
+        <form id="thread-form"
+            class="col s12"
+            method="POST"
+            action="{{ route('board.store', ['board' => $board->headline]) }}"
+            enctype="multipart/form-data">
             @csrf
 
             <div class="form-group row">

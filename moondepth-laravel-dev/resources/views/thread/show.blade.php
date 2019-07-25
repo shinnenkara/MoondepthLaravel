@@ -33,12 +33,16 @@
     <div id="message-creation" class="container center">
         <create-message></create-message>
         <div id="shadow" class="container white-text center">
-            <form id="message-form" class="col s12" method="post" action="{{ route('thread.store', ['board' => $thread->board->headline, 'thread' => $thread->id]) }}">
+            <form id="message-form"
+                class="col s12"
+                method="post"
+                action="{{ route('thread.store', ['board' => $thread->board->headline, 'thread' => $thread->id]) }}"
+                enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group row">
                     <div class="input-field col s12 m6">
-                            <input id="username_input"
+                        <input id="username_input"
                             class="white-text form-control @error('username') is-invalid @enderror"
                             type="text"
                             name="username"
@@ -86,6 +90,31 @@
                         @enderror
                     </div>
                     <div class="input-field col s12">
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span>File</span>
+                                <input id="file_input"
+                                    class="form-control-file"
+                                    type="file"
+                                    name="file_input"
+                                    multiple>
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input id="file_path"
+                                    class="file-path validate white-text"
+                                    type="text"
+                                    name="file">
+                                <!--placeholder="Upload one or more files" -->
+                                <span class="helper-text grey-text text-darken-2 left">Upload up to three files</span>
+                            </div>
+                            @error('file_input')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="input-field col s12">
                         <button id="submit_input" class="white-text waves-effect waves-light grey darken-3 btn-large" type="submit" name="submit" value="send">Send</button>
                     </div>
                     <div class="submit-check col s12">
@@ -112,6 +141,13 @@
                         <h5>{{ $message->text }}</h5>
                     </div>
 
+                </div>
+                <div class="row">
+                    @foreach($message->files as $file)
+                    <div class="mimg col s10 m12 l4">
+                        <img style="width: 100%; height: 100%;" src="{{ Storage::disk('s3')->url($file->s3_path) }}" alt="{{ urldecode($file->original_name) }}">
+                    </div>
+                    @endforeach
                 </div>
             </div>
             @endforeach
