@@ -8,6 +8,7 @@ use App\Thread;
 use App\Message;
 use App\MessageFile;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ThreadController extends Controller
 {
@@ -52,25 +53,31 @@ class ThreadController extends Controller
         $thread->update(['amount_of_messages' => ++$thread->amount_of_messages]);
 
         if(null !== request('file_input')) {
-            $requested_file = request()->validate([
-                'file_input' => 'image'
-            ]);
-            $image_mime_type = $requested_file['file_input']->getClientMimeType();
-            // $image_path = $requested_file['file_input']->storeAs('active-threads', uniqid("message-img-"), 's3');
-            $image_path = Storage::disk('s3')->putFileAs('active-threads', $requested_file['file_input'], uniqid("message-img-"), 'public');
-            $image_full_path = $image_path . '.' . explode('/', $image_mime_type)[1];
-            $image_original_name = $requested_file['file_input']->getClientOriginalName();
-            $image_size = $requested_file['file_input']->getClientSize();
-            $file_data = [
-                'mid' => $message->id,
-                's3_path' => $image_path,
-                's3_full_path' => $image_full_path,
-                'original_name' => $image_original_name,
-                'mime_type' => $image_mime_type,
-                'size' => $image_size
-            ];
-            $file = MessageFile::create($file_data);
-        } else {
+
+            $requested_files = Validator::make(request()->all(), [
+                'file_input.*' => 'image|max:10000'
+            ],[
+                'file_input.*.image' => 'Only jpeg, png, bmp, gif, or svg are allowed',
+                'file_input.*.max' => 'Sorry! Maximum allowed size for an image is 10MB',
+            ])->validate();
+
+            foreach($requested_files['file_input'] as $requested_file) {
+                $image_mime_type = $requested_file->getClientMimeType();
+                // $image_path = $requested_file['file_input']->storeAs('active-threads', uniqid("message-img-"), 's3');
+                $image_path = Storage::disk('s3')->putFileAs('active-threads', $requested_file, uniqid("message-img-"), 'public');
+                $image_full_path = $image_path . '.' . explode('/', $image_mime_type)[1];
+                $image_original_name = $requested_file->getClientOriginalName();
+                $image_size = $requested_file->getClientSize();
+                $file_data = [
+                    'mid' => $message->id,
+                    's3_path' => $image_path,
+                    's3_full_path' => $image_full_path,
+                    'original_name' => $image_original_name,
+                    'mime_type' => $image_mime_type,
+                    'size' => $image_size
+                ];
+                $file = MessageFile::create($file_data);
+            }
         }
 
         return redirect(route('thread.show', ['board' => $board_headline, 'thread' => $thread->id]));

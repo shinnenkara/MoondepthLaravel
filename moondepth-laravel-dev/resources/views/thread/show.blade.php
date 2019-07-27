@@ -96,7 +96,7 @@
                                 <input id="file_input"
                                     class="form-control-file"
                                     type="file"
-                                    name="file_input"
+                                    name="file_input[]"
                                     multiple>
                             </div>
                             <div class="file-path-wrapper">
@@ -107,7 +107,7 @@
                                 <!--placeholder="Upload one or more files" -->
                                 <span class="helper-text grey-text text-darken-2 left">Upload up to three files</span>
                             </div>
-                            @error('file_input')
+                            @error('file_input.*')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
