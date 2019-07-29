@@ -28,6 +28,15 @@
                 <h5>{{ $thread->subject_text }}</h5></span>
             </div>
         </div>
+        <div class="thread-files">
+            <div class="row">
+                @foreach($thread->files as $file)
+                <div class="mimg col s10 m12 l4">
+                    <img style="width: 100%; height: 100%;" src="{{ Storage::disk('s3')->url($file->s3_path) }}" alt="{{ urldecode($file->original_name) }}">
+                </div>
+                @endforeach
+            </div>
+        </div>
     </div>
 
     <div id="message-creation" class="container center">
@@ -77,11 +86,9 @@
                         <textarea id="message_text_input"
                             class="materialize-textarea white-text form-control @error('message_text') is-invalid @enderror"
                             name="message_text"
-                            value="{{ old('message_text') }}"
                             required
                             data-length="120"
-                            autofocus>
-                        </textarea>
+                            autofocus>{{ old('subject_text') }}</textarea>
                         <label for="message_text_input">Message text</label>
                         @error('message_text')
                             <span class="invalid-feedback" role="alert">
@@ -142,12 +149,14 @@
                     </div>
 
                 </div>
-                <div class="row">
-                    @foreach($message->files as $file)
-                    <div class="mimg col s10 m12 l4">
-                        <img style="width: 100%; height: 100%;" src="{{ Storage::disk('s3')->url($file->s3_path) }}" alt="{{ urldecode($file->original_name) }}">
+                <div class="message-files">
+                    <div class="row">
+                        @foreach($message->files as $file)
+                        <div class="mimg col s10 m12 l4">
+                            <img style="width: 100%; height: 100%;" src="{{ Storage::disk('s3')->url($file->s3_path) }}" alt="{{ urldecode($file->original_name) }}">
+                        </div>
+                        @endforeach
                     </div>
-                    @endforeach
                 </div>
             </div>
             @endforeach

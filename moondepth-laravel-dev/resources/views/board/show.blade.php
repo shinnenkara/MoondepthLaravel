@@ -54,11 +54,10 @@
                 <div class="input-field col s12">
                     <textarea id="subject_text_input"
                         class="materialize-textarea white-text form-control @error('subject_text') is-invalid @enderror"
+                        type="textarea"
                         name="subject_text"
-                        value="{{ old('subject_text') }}"
                         required
-                        data-length="120">
-                    </textarea>
+                        data-length="120">{{ old('subject_text') }}</textarea>
                     <label for="subject_text_input">Subject text</label>
                     @error('subject_text')
                         <span class="invalid-feedback" role="alert">
@@ -66,19 +65,36 @@
                         </span>
                     @enderror
                 </div>
-                <!-- <div class="input-field col s12">
+                <div class="input-field col s12">
                     <div class="file-field input-field">
                         <div class="btn">
                             <span>File</span>
-                            <input id="file_array_input" type="file" name="file_array_input" multiple>
+                            <input id="file_input"
+                                class="form-control-file"
+                                type="file"
+                                name="file_input[]"
+                                multiple>
                         </div>
                         <div class="file-path-wrapper">
-                            <input id="file_path" class="file-path validate white-text" type="text" name="file_array"> -->
+                            <input id="file_path"
+                                class="file-path validate white-text"
+                                type="text"
+                                name="file">
                             <!--placeholder="Upload one or more files" -->
-                            <!-- <span class="helper-text grey-text text-darken-2 left">Upload up to three files</span>
+                            <span class="helper-text grey-text text-darken-2 left">Upload up to three files</span>
                         </div>
+                        @error('file_input')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        @error('file_input.*')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
-                </div> -->
+                </div>
                 <div class="input-field col s12">
                     <button id="submit_input" class="white-text waves-effect waves-light grey darken-3 btn-large" type="submit" name="submit" value="send">Send</button>
                 </div>
@@ -114,6 +130,15 @@
                         <h5>{{ $thread->subject_text }}</h5></span>
                     </div>
                 </div>
+                <div class="thread-files">
+                    <div class="row">
+                        @foreach($thread->files as $file)
+                        <div class="mimg col s10 m12 l4">
+                            <img style="width: 100%; height: 100%;" src="{{ Storage::disk('s3')->url($file->s3_path) }}" alt="{{ urldecode($file->original_name) }}">
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
 
             <div class="thread-messages">
@@ -128,11 +153,18 @@
                                 <h5 class="content">No. {{ $message->id }}</h5></a>
                         </div>
                         <div class="message-body">
-
                             <div class="container">
                                 <h5>{{ $message->text }}</h5>
                             </div>
-
+                        </div>
+                        <div class="message-files">
+                            <div class="row">
+                                @foreach($message->files as $file)
+                                <div class="mimg col s10 m12 l4">
+                                    <img style="width: 100%; height: 100%;" src="{{ Storage::disk('s3')->url($file->s3_path) }}" alt="{{ urldecode($file->original_name) }}">
+                                </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                     @endforeach
