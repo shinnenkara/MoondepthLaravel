@@ -24,17 +24,17 @@
         </div>
 
         <div class="thread-body">
+            @if(!$thread->files->isEmpty())
+            <div class="thread-files">
+                <div class="row">
+                    @foreach($thread->files as $file)
+                    <thread-image src="{{ Storage::disk('s3')->url($file->s3_path) }}" alt="{{ urldecode($file->original_name) }}" size="{{$file->size}}" width="{{$file->width}}" height="{{$file->height}}"></thread-image>
+                    @endforeach
+                </div>
+            </div>
+            @endif
             <div class="container">
                 <h5>{{ $thread->subject_text }}</h5></span>
-            </div>
-        </div>
-        <div class="thread-files">
-            <div class="row">
-                @foreach($thread->files as $file)
-                <div class="mimg col s10 m12 l4">
-                    <img style="width: 100%; height: 100%;" src="{{ Storage::disk('s3')->url($file->s3_path) }}" alt="{{ urldecode($file->original_name) }}">
-                </div>
-                @endforeach
             </div>
         </div>
     </div>
@@ -143,19 +143,17 @@
                         <h5 class="content">No. {{ $message->id }}</h5></a>
                 </div>
                 <div class="message-body">
-
+                    @if(!$message->files->isEmpty())
+                    <div class="message-files">
+                        <div class="row">
+                            @foreach($message->files as $file)
+                            <message-image src="{{ Storage::disk('s3')->url($file->s3_path) }}" alt="{{ urldecode($file->original_name) }}" size="{{$file->size}}" width="{{$file->width}}" height="{{$file->height}}"></message-image>
+                            @endforeach
+                        </div>
+                    </div>
+                    @endif
                     <div class="container">
                         <h5>{{ $message->text }}</h5>
-                    </div>
-
-                </div>
-                <div class="message-files">
-                    <div class="row">
-                        @foreach($message->files as $file)
-                        <div class="mimg col s10 m12 l4">
-                            <img style="width: 100%; height: 100%;" src="{{ Storage::disk('s3')->url($file->s3_path) }}" alt="{{ urldecode($file->original_name) }}">
-                        </div>
-                        @endforeach
                     </div>
                 </div>
             </div>

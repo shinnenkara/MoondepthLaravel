@@ -70,6 +70,9 @@ class ThreadController extends Controller
             $image_path = Storage::disk('s3')->putFileAs('active-threads', $requested_file, uniqid("message-img-"), 'public');
             $image_full_path = $image_path . '.' . explode('/', $image_mime_type)[1];
             $image_original_name = $requested_file->getClientOriginalName();
+            $intervention_image = Image::make($requested_file->getPathname());
+            $image_width = $intervention_image->width();
+            $image_height = $intervention_image->height();
             $image_size = $requested_file->getClientSize();
             $file_data = [
                 'mid' => $message->id,
@@ -77,6 +80,8 @@ class ThreadController extends Controller
                 's3_full_path' => $image_full_path,
                 'original_name' => $image_original_name,
                 'mime_type' => $image_mime_type,
+                'width' => $image_width,
+                'height' => $image_height,
                 'size' => $image_size
             ];
             $file = MessageFile::create($file_data);

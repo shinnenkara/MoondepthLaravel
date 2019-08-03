@@ -20,6 +20,8 @@ class CreateMessageFilesTable extends Migration
             $table->string('s3_full_path');
             $table->string('original_name');
             $table->string('mime_type');
+            $table->unsignedBigInteger('width');
+            $table->unsignedBigInteger('height');
             $table->unsignedBigInteger('size');
             $table->timestamps();
 

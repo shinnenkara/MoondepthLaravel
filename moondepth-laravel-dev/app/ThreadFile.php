@@ -26,7 +26,7 @@ class ThreadFile extends Model
      * @var array
      */
     protected $fillable = [
-        'tid', 's3_path', 's3_full_path', 'original_name', 'mime_type', 'size'
+        'tid', 's3_path', 's3_full_path', 'original_name', 'mime_type', 'size', 'width', 'height'
     ];
 
     /**
