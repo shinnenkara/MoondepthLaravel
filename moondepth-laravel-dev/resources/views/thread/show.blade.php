@@ -7,7 +7,7 @@
     </a>
 </div>
 <div class="thread col l12 m12 s12">
-    <div class="thread-topic">
+    <div id="OP" class="thread-topic">
         <div class="thread-head">
             <i class="material-icons hidethread-icons content">arrow_drop_down</i>
             <a class="white-text" href="{{ route('thread.show', ['board' => $thread->board->headline, 'thread' => $thread->id]) }}">
@@ -34,7 +34,7 @@
             </div>
             @endif
             <div class="container">
-                <h5>{{ $thread->subject_text }}</h5></span>
+                <h5>{!! nl2br(e($thread->subject_text)) !!}</h5></span>
             </div>
         </div>
     </div>
@@ -134,12 +134,12 @@
     <div class="thread-messages">
         <div class="row">
             @foreach($thread->messages as $message)
-            <div class="message col l11 m11 s12">
+            <div id="message-{{$message->id}}" class="message col l11 m11 s12">
                 <div class="message-head">
                     <i class="material-icons hidemessage-icons">arrow_drop_down</i>
                     <h5 class="content grey-text text-lighten-1">{{ mb_strtoupper(mb_substr($message->user->username, 0, 1)).mb_substr($message->user->username, 1) }}</h5>
                     <h5 class="content">{{ $message->created_at }}</h5>
-                    <a class="white-text" href="{{ route('thread.show', ['board' => $thread->board->headline, 'thread' => $thread->id]) }}">
+                    <a class="white-text" href="#m-{{ $message->id }}">
                         <h5 class="content">No. {{ $message->id }}</h5></a>
                 </div>
                 <div class="message-body">
@@ -153,7 +153,11 @@
                     </div>
                     @endif
                     <div class="container">
-                        <h5>{{ $message->text }}</h5>
+                        @if($message->response_to)
+                        <a class="white-text" href="#message-{{ $message->response_to }}">
+                            <h6>{{'>>' . $message->response_to}}</h6></a>
+                        @endif
+                        <h5>{!! nl2br(e($message->text)) !!}</h5>
                     </div>
                 </div>
             </div>

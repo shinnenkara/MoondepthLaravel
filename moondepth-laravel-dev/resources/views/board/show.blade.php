@@ -135,7 +135,7 @@
                     </div>
                     @endif
                     <div class="container">
-                        <h5>{{ $thread->subject_text }}</h5></span>
+                        <h5>{!! nl2br(e($thread->subject_text)) !!}</h5></span>
                     </div>
                 </div>
             </div>
@@ -161,7 +161,10 @@
                             </div>
                             @endif
                             <div class="container">
-                                <h5>{{ $message->text }}</h5>
+                                @if($message->response_to)
+                                <h6>{{'>> ' . $message->response_to}}</h6>
+                                @endif
+                                <h5>{!! nl2br(e($message->text)) !!}</h5>
                             </div>
                         </div>
                     </div>
