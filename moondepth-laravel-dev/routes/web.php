@@ -1,4 +1,5 @@
 <?php
+use App\Mail\UserResponseMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,10 @@
 Auth::routes();
 
 Route::get('/', 'WelcomeController@index')->name('welcome.index');
+
+Route::get('/email', function () {
+    return new UserResponseMail();
+});
 
 Route::get('/board/{board}', 'BoardController@show')->name('board.show');
 Route::post('/board/{board}', 'BoardController@store')->name('board.store');

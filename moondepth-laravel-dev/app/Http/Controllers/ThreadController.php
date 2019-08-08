@@ -9,6 +9,9 @@ use App\Message;
 use App\MessageFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use App\Mail\UserResponseMail;
+use Illuminate\Support\Facades\Mail;
+use App\User;
 
 class ThreadController extends Controller
 {
@@ -96,6 +99,8 @@ class ThreadController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function show($board_headline, Thread $thread) {
+
+        Mail::to(User::all()->first()->email)->send(new UserResponseMail());
 
         $boards = parent::getAllBoards();
 

@@ -1,3 +1,74 @@
+/*
+1st
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+#app {
+    flex: 1 0 auto;
+}
+*/
+
+/*
+2nd
+
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+#app {
+    min-height: 100%;
+
+    // Equal to height of footer
+    // But also accounting for potential margin-bottom of last child
+    margin-bottom: -50px;
+}
+.page-footer{
+    height: 50px;
+}
+*/
+
+/*
+3rd
+html, body {
+    height: 100%;
+    margin: 0;
+}
+#app {
+    min-height: 100%;
+}
+.main {
+    padding: 20px;
+    padding-bottom: 50px;
+}
+.page-footer {
+    height: 50px;
+    margin-top: -50px;
+}
+*/
+
+/*
+4th
+
+#app {
+    min-height: calc(100vh - 182px);
+}
+.page-footer {
+    height: 182px;
+}
+*/
+
+html {
+  height: 100%;
+}
+body {
+    background: #212121; /* indigo darken-4 */
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
 nav {
     background-color: grey;
 }
@@ -13,14 +84,19 @@ nav {
 .pagination li.active {
     background-color: rgba(0,0,0,0);
 }
-header, footer {
+header {
     padding-left: 40px;
+    flex: 1 0 auto;
+}
+.page-footer {
+    padding-left: 65px;
+    flex-shrink: 0;
 }
 main {
     padding-left: 65px;
 }
-body {
-    background: #212121; /* indigo darken-4 */
+#app {
+    flex: 1 0 auto;
 }
 #nav-mobile {
     background: #424242; /* indigo darken-3 */
@@ -35,10 +111,15 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+#nav-mobile-button {
+    transform: translateX(0px);
+}
 #logo-container {
+    display: flex;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    align-items: baseline;
 }
 ::-webkit-scrollbar {
     width: 10px;
