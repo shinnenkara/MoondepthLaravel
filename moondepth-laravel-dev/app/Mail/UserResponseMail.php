@@ -18,7 +18,7 @@ class UserResponseMail extends Mailable
      */
     public function __construct()
     {
-        //
+        $this->subject = "Test Subject";
     }
 
     /**

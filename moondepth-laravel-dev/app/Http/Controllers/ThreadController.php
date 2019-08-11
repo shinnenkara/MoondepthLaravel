@@ -100,7 +100,8 @@ class ThreadController extends Controller
      */
     public function show($board_headline, Thread $thread) {
 
-        Mail::to(User::all()->first()->email)->send(new UserResponseMail());
+        // Mailable
+        // Mail::to(User::all()->first()->email)->send(new UserResponseMail());
 
         $boards = parent::getAllBoards();
 

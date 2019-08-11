@@ -103,7 +103,9 @@
                 </div>
                 <div class="col l3 s12">
                     <h5 class="white-text">Connect</h5>
-                    <ul><li><a class="white-text" href="#!">Some link too</a></li>
+                    <ul>
+                        <li class="hide-on-med-and-down"><a class="white-text" target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to=mailbox@moondepth.space&su=Moondepth%20User%20Report&body=<please write down here your thoughts>">mailbox@moondepth.space</a></li>
+                        <li class="hide-on-large-only"><a class="white-text" launch-external="true" href="mailto:mailbox@moondepth.space?subject=Moondepth User Report&body=<please write down here your thoughts>">mailbox@moondepth.space</a></li>
                     </ul>
                 </div>
             </div>
