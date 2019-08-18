@@ -16,9 +16,9 @@ Auth::routes();
 
 Route::get('/', 'WelcomeController@index')->name('welcome.index');
 
-Route::get('/email', function () {
-    return new UserResponseMail();
-});
+Route::get('/about', 'AboutController@index')->name('about.index');
+Route::get('/help', 'HelpController@index')->name('help.index');
+Route::get('/rules', 'RulesController@index')->name('rules.index');
 
 Route::get('/board/{board}', 'BoardController@show')->name('board.show');
 Route::post('/board/{board}', 'BoardController@store')->name('board.store');
