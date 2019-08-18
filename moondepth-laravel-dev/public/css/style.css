@@ -69,6 +69,9 @@ body {
     min-height: 100vh;
     flex-direction: column;
 }
+#app-name {
+    padding-left: 0.5rem;
+}
 nav {
     background-color: grey;
 }
@@ -120,6 +123,23 @@ main {
     overflow: hidden;
     text-overflow: ellipsis;
     align-items: baseline;
+}
+#additional-links {
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 20px;
+    align-items: baseline;
+}
+.dropdown-content {
+    background: #424242; /* indigo darken-3 */
+}
+.dropdown-content li > a, .dropdown-content li > span {
+    color: white;
+}
+.additional-link {
+    margin-left: 1.5rem;
 }
 ::-webkit-scrollbar {
     width: 10px;
