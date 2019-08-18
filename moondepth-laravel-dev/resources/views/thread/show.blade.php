@@ -132,6 +132,14 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="col s12">
+                        <div class="center g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY') }}"></div>
+                        @error('g-recaptcha-response')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                     <div class="input-field col s12">
                         <button id="submit_input" class="white-text waves-effect waves-light grey darken-3 btn-large" type="submit" name="submit" value="send">Send</button>
                     </div>

@@ -278,3 +278,6 @@ a:hover, a:focus {
 .pagination li.active a {
     color: #444;
 }
+.g-recaptcha {
+    display: inline-block;
+}

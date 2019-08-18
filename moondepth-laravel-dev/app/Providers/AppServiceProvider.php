@@ -35,5 +35,6 @@ class AppServiceProvider extends ServiceProvider
         Validator::replacer('alphanum', function ($message, $attribute, $rule, $parameters) {
             return "Only alphanumeric symbols";
         });
+        Validator::extend('recaptcha', 'App\\Validators\\ReCaptcha@validate');
     }
 }

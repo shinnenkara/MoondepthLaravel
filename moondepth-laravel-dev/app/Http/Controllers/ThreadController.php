@@ -35,10 +35,23 @@ class ThreadController extends Controller
 
         ini_set('max_execution_time', 180);
 
-        $data = request()->validate([
+        $data_validator = Validator::make(request()->all(), [
             // 'username' => 'required',
             'message_text' => 'required',
+            'g-recaptcha-response' => 'required|recaptcha'
+        ],[
+            'g-recaptcha-response.*' => 'Please ensure that you are a human!'
         ]);
+
+        if ($data_validator->fails()) {
+            return redirect()
+                ->route('thread.show', ['board' => $board_headline, 'thread' => $thread->id])
+                ->withErrors($data_validator)
+                ->withInput()
+                ->with(['is_error' => true]);
+        } else {
+            $data = $data_validator->valid();
+        }
 
         if(null !== request('response_to')) {
             $response_to = request()->validate([
