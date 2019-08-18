@@ -33,6 +33,8 @@ class ThreadController extends Controller
      */
     public function store($board_headline, Thread $thread) {
 
+        ini_set('max_execution_time', 180);
+
         $data = request()->validate([
             // 'username' => 'required',
             'message_text' => 'required',
@@ -48,12 +50,23 @@ class ThreadController extends Controller
 
         if(null !== request('file_input')) {
 
-            $requested_files = Validator::make(request()->all(), [
-                'file_input.*' => 'image|max:10000'
+            $requested_validator = Validator::make(request()->all(), [
+                'file_input' => 'max:3',
+                'file_input.*' => 'image|max:2000',
             ],[
-                'file_input.*.image' => 'Only jpeg, png, bmp, gif, or svg are allowed',
-                'file_input.*.max' => 'Sorry! Maximum allowed size for an image is 10MB',
-            ])->validate();
+                'file_input.max' => 'Only 3 files are allowed.',
+                'file_input.*.image' => 'Only jpeg, png, bmp, gif, or svg are allowed.',
+                'file_input.*.max' => 'Sorry! Maximum allowed size for an image is 2MB.',
+            ]);
+            if ($requested_validator->fails()) {
+                return redirect()
+                    ->route('thread.show', ['board' => $board_headline, 'thread' => $thread->id])
+                    ->withErrors($requested_validator)
+                    ->withInput()
+                    ->with(['is_error' => true]);
+            } else {
+                $requested_files = $requested_validator->valid();
+            }
         } else {
             $requested_files = ['file_input' => []];
         }

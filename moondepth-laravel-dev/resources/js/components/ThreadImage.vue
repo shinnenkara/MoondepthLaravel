@@ -13,7 +13,7 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+            // console.log('Component mounted.')
         },
         props: {
             src: {
@@ -27,17 +27,17 @@
                 default: "404",
             },
             size: {
-                type: Number,
+                type: String, // Number
                 required: true,
                 default: 0,
             },
             width: {
-                type: Number,
+                type: String, // Number
                 required: true,
                 default: 0,
             },
             height: {
-                type: Number,
+                type: String, // Number
                 required: true,
                 default: 0,
             }

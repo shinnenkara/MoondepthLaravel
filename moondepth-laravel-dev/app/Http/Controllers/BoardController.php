@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 use App\Board;
 use App\Thread;
 use App\ThreadFile;
@@ -39,6 +40,8 @@ class BoardController extends Controller
      */
     public function store(Board $board) {
 
+        ini_set('max_execution_time', 180);
+
         $data = request()->validate([
             // 'username' => 'required',
             'topic' => 'required',
@@ -47,14 +50,23 @@ class BoardController extends Controller
 
         if(null !== request('file_input')) {
 
-            $requested_files = Validator::make(request()->all(), [
+            $requested_validator = Validator::make(request()->all(), [
                 'file_input' => 'max:3',
-                'file_input.*' => 'image|max:5000',
+                'file_input.*' => 'image|max:2000',
             ],[
                 'file_input.max' => 'Only 3 files are allowed.',
                 'file_input.*.image' => 'Only jpeg, png, bmp, gif, or svg are allowed.',
-                'file_input.*.max' => 'Sorry! Maximum allowed size for an image is 5MB.',
-            ])->validate();
+                'file_input.*.max' => 'Sorry! Maximum allowed size for an image is 2MB.',
+            ]);
+            if ($requested_validator->fails()) {
+                return redirect()
+                    ->route('board.show', ['board' => $board->headline])
+                    ->withErrors($requested_validator)
+                    ->withInput()
+                    ->with(['is_error' => true]);
+            } else {
+                $requested_files = $requested_validator->valid();
+            }
         } else {
             $requested_files = ['file_input' => []];
         }
@@ -73,6 +85,9 @@ class BoardController extends Controller
             $image_path = Storage::disk('s3')->putFileAs('active-threads', $requested_file, uniqid("message-img-"), 'public');
             $image_full_path = $image_path . '.' . explode('/', $image_mime_type)[1];
             $image_original_name = $requested_file->getClientOriginalName();
+            $intervention_image = Image::make($requested_file->getPathname());
+            $image_width = $intervention_image->width();
+            $image_height = $intervention_image->height();
             $image_size = $requested_file->getClientSize();
             $file_data = [
                 'tid' => $thread->id,
@@ -80,6 +95,8 @@ class BoardController extends Controller
                 's3_full_path' => $image_full_path,
                 'original_name' => $image_original_name,
                 'mime_type' => $image_mime_type,
+                'width' => $image_width,
+                'height' => $image_height,
                 'size' => $image_size
             ];
             $file = ThreadFile::create($file_data);

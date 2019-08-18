@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title', '/' . $thread->board->headline . '/ — ' . config('app.name', 'Laravel') . ' — ' . $thread->topic)
+
+@section('meta_tags')
+<meta name="description" content="">
+@endsection
+
 @section('content')
 <div id="back-button" class="container white-text">
     <a class="waves-effect waves-light grey darken-3 btn-large" href="/board/{{ $thread->board->headline }}">
@@ -40,7 +46,7 @@
     </div>
 
     <div id="message-creation" class="container center">
-        <create-message></create-message>
+        <create-message is_error="{{ session()->get( 'is_error' ) }}"></create-message>
         <div id="shadow" class="container white-text center">
             <form id="message-form"
                 class="col s12"
@@ -88,7 +94,7 @@
                             name="message_text"
                             required
                             data-length="120"
-                            autofocus>{{ old('subject_text') }}</textarea>
+                            autofocus>{{ old('message_text') }}</textarea>
                         <label for="message_text_input">Message text</label>
                         @error('message_text')
                             <span class="invalid-feedback" role="alert">
@@ -114,6 +120,11 @@
                                 <!--placeholder="Upload one or more files" -->
                                 <span class="helper-text grey-text text-darken-2 left">Upload up to three files</span>
                             </div>
+                            @error('file_input')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             @error('file_input.*')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -130,7 +141,6 @@
             </form>
         </div>
     </div>
-
     <div class="thread-messages">
         <div class="row">
             @foreach($thread->messages as $message)

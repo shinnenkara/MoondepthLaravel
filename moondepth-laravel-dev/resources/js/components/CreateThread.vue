@@ -6,7 +6,16 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+            if(this.is_error) {
+                this.creationToggle();
+            }
+        },
+        props: {
+            is_error: {
+                type: String,
+                required: true,
+                default: false,
+            }
         },
         data: function() {
             return {

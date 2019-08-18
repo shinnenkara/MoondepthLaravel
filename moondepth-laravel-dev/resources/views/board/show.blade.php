@@ -1,12 +1,18 @@
 @extends('layouts.app')
 
+@section('title', '/' . $board->headline . '/ — ' . config('app.name', 'Laravel') . ' — ' . $board->description)
+
+@section('meta_tags')
+<meta name="description" content="">
+@endsection
+
 @section('content')
 <div id="board-welcome" class="container center">
     <h2>Welcome to /{{ $board->headline }}/</h2>
     <h5>{{ $board->description }}</h5>
 </div>
 <div id="thread-creation" class="container center">
-    <create-thread></create-thread>
+    <create-thread is_error="{{ session()->get( 'is_error' ) }}"></create-thread>
     <div id="shadow" class="container white-text center">
         <form id="thread-form"
             class="col s12"
