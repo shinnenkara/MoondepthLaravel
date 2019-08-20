@@ -100,7 +100,9 @@
                 <ul class="section table-of-contents">
                     @foreach($boards as $board)
                     <li>
-                        <a class = "white-text text-navbar" href="{{ route('board.show', $board->headline) }}" title="">/{{ $board->headline }}/ - {{ $board->description }}</a>
+                        <a class = "white-text text-navbar" href="{{ route('board.show', $board->headline) }}" title="{{ $board->description }}">
+                            <span>/{{ $board->headline }}/ - {{ $board->description }}</span>
+                        </a>
                     </li>
                     @endforeach
                 </ul>
