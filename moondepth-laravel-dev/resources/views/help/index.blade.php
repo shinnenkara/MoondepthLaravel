@@ -15,7 +15,12 @@
 <div class="container center">
     <h1><strong>Help</strong></h1>
 </div>
-<div class="center">
-
+<div class="container">
+    <h3 class="justify-text"><u>{{ config('app.name', 'Laravel') . ' — Few tips to use'}}</u></h3>
+    <ul type="disc">
+        <li>
+            <p class="justify-text flow-text">You want something, help yourself.</span>
+        </li>
+    </ul>
 </div>
 @endsection
