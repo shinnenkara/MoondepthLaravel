@@ -16,16 +16,16 @@
     <h1><strong>About</strong></h1>
 </div>
 <div class="container">
-    <h3 class="about-text-header"><u>{{ config('app.name', 'Laravel') . ' — Space for your message'}}</u></h3>
+    <h3 class="justify-text-header"><u>{{ config('app.name', 'Laravel') . ' — Space for your message'}}</u></h3>
     <ul type="disc">
         <li>
-            <p class="about-text flow-text">Moondepth is a new image-based space where anyone can post comments with images. There are some specific boards on various topics you like.</span>
+            <p class="justify-text flow-text">Moondepth is a new image-based space where anyone can post comments with images. There are some specific boards on various topics you like.</span>
         </li>
         <li>
-            <p class="about-text flow-text">You don't need to register an account before posting any staff here.</span>
+            <p class="justify-text flow-text">You don't need to register an account before posting any staff here.</span>
         </li>
         <li>
-            <p class="about-text flow-text">Check the <u><a href="{{ route('rules.index') }}" class="link text-primary">Rules</a></u> before posting. And you can message to mailbox@moondepth.space or read the <u><a href="{{ route('help.index') }}" class="link text-primary">Help</a></u> if something is unclear about Moondepth.</span>
+            <p class="justify-text flow-text">Check the <u><a href="{{ route('rules.index') }}" class="link text-primary">Rules</a></u> before posting. And you can message to mailbox@moondepth.space or read the <u><a href="{{ route('help.index') }}" class="link text-primary">Help</a></u> if something is unclear about Moondepth.</span>
         </li>
     </ul>
 </div>

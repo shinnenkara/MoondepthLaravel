@@ -138,12 +138,12 @@ main {
 .dropdown-content li > a, .dropdown-content li > span {
     color: white;
 }
-.about-text {
+.justify-text {
     text-align: justify;
 }
-.about-text-header {
+.justify-text-header {
     text-align: justify;
-    text-align-last: right
+    text-align-last: right;
 }
 .additional-link {
     margin-left: 1.5rem;
