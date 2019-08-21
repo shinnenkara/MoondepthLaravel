@@ -50,7 +50,7 @@
             </ol>
         </li>
         <li>
-            <p class="justify-text flow-text">You will not post or request personal information ("dox") or calls to invasion ("raids"). Inciting or participating in cross-board (intra-4chan) raids is also not permitted.</p>
+            <p class="justify-text flow-text">You will not post or request personal information ("dox") or calls to invasion ("raids"). Inciting or participating in cross-board (intra-Moondepth) raids is also not permitted.</p>
         </li>
         <li>
             <p class="justify-text flow-text">The quality of posts is extremely important to this community. Contributors are encouraged to provide high-quality images and informative comments. Please refrain from posting the following:</p>
@@ -76,7 +76,7 @@
             <p class="justify-text flow-text">Submitting false or misclassified reports, or otherwise abusing the reporting system may result in a ban. Replying to a thread stating that you've reported or "saged" it, or another post, is also not allowed.</p>
         </li>
         <li>
-            <p class="justify-text flow-text">Complaining about 4chan (its policies, moderation, etc) on the imageboards may result in post deletion and a ban.</p>
+            <p class="justify-text flow-text">Complaining about Moondepth (its policies, moderation, etc) on the imageboards may result in post deletion and a ban.</p>
         </li>
         <li>
             <p class="justify-text flow-text">Evading your ban will result in a permanent one. Instead, wait and appeal it!</p>
@@ -88,7 +88,7 @@
             <p class="justify-text flow-text">Advertising (all forms) is not welcome—this includes any type of referral linking, "offers", soliciting, begging, stream threads, etc.</p>
         </li>
         <li>
-            <p class="justify-text flow-text">Impersonating a 4chan administrator, moderator, or janitor is strictly forbidden.</p>
+            <p class="justify-text flow-text">Impersonating a Moondepth administrator, moderator, or janitor is strictly forbidden.</p>
         </li>
         <li>
             <p class="justify-text flow-text">Do not use avatars or attach signatures to your posts.</p>
