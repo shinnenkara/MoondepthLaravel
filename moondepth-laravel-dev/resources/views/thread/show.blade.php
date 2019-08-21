@@ -3,7 +3,7 @@
 @section('title', '/' . $thread->board->headline . '/ — ' . config('app.name', 'Laravel') . ' — ' . $thread->topic)
 
 @section('meta_tags')
-<meta name="description" content="">
+<meta name="description" content="{{ $thread->topic }}. {{ $thread->subject_text }}. © 2019 Moondepth. All rights reserved. Made by kara_sick">
 @endsection
 
 @section('content')

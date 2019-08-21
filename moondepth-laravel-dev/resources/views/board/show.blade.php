@@ -3,7 +3,7 @@
 @section('title', '/' . $board->headline . '/ — ' . config('app.name', 'Laravel') . ' — ' . $board->description)
 
 @section('meta_tags')
-<meta name="description" content="">
+<meta name="description" content="{{ $board->description }}. © 2019 Moondepth. All rights reserved. Made by kara_sick">
 @endsection
 
 @section('content')

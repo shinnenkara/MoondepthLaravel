@@ -3,7 +3,7 @@
 @section('title', 'About — ' . config('app.name', 'Laravel') . ' — Space for your message')
 
 @section('meta_tags')
-<meta name="description" content="">
+<meta name="description" content="Moondepth is a new image-based space where anyone can post comments with images. There are some specific boards on various topics you like. You don't need to register an account before posting any staff here.">
 @endsection
 
 @section('content')
