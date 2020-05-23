@@ -175,6 +175,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * External Application Service Providers...
+         */
+        Spatie\Sitemap\SitemapServiceProvider::class,
+        BaoPham\DynamoDb\DynamoDbServiceProvider::class,
+
     ],
 
     /*
