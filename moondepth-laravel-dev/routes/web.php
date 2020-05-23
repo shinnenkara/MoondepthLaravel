@@ -25,3 +25,6 @@ Route::post('/board/{board}', 'BoardController@store')->name('board.store');
 
 Route::get('/board/{board}/thread/{thread}', 'ThreadController@show')->name('thread.show');
 Route::post('/board/{board}/thread/{thread}', 'ThreadController@store')->name('thread.store');
+
+Route::post('/board/{board}/thread/{thread}/message/all', 'MessageController@all')->name('message.all');
+Route::post('/board/{board}/thread/{thread}/message/{message}/get', 'MessageController@get')->name('message.get');

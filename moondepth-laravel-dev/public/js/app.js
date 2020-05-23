@@ -2039,40 +2039,75 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    message: {
-      type: Object,
-      required: true
-    },
-    username: {
+    // message: {
+    //     type: Object,
+    //     required: true,
+    // },
+    // username: {
+    //     type: String,
+    //     required: true,
+    // },
+    // filesPath: {
+    //     type: String,
+    //     required: false,
+    //     default: ''
+    // },
+    // files: {
+    //     type: Array,
+    //     required: false,
+    // },
+    boardId: {
       type: String,
       required: true
     },
-    filesPath: {
-      type: String,
-      required: false,
-      "default": ''
+    threadId: {
+      type: Number,
+      required: true
     },
-    files: {
-      type: Array,
-      required: false
+    messageId: {
+      type: Number,
+      required: true
     }
+  },
+  data: function data() {
+    return {
+      message: "",
+      username: "",
+      filesPath: "",
+      files: []
+    };
   },
   mounted: function mounted() {
     this.update();
   },
   methods: {
     update: function update() {
-      console.log('message:');
-      console.log(this.message);
-      console.log('username:');
-      console.log(this.username);
+      var _this = this;
 
-      if (Array.isArray(this.files) && this.files.length) {
-        console.log('filesPath:');
-        console.log(this.filesPath);
-        console.log('files:');
-        console.log(this.files);
-      }
+      axios.post('/board/' + this.boardId + '/thread/' + this.threadId + '/message/' + this.messageId + '/get').then(function (response) {
+        var data = response.data;
+        console.log('data');
+        console.log(data);
+        _this.message = data.message;
+        _this.username = data.user.username;
+        _this.files = data.files;
+
+        if (Array.isArray(_this.files) && _this.files.length) {
+          _this.filesPath = data.filesPath;
+          _this.files = data.files;
+        }
+
+        console.log('board: ' + _this.boardId + ' ' + 'thread: ' + _this.threadId + ' ' + 'message: ' + _this.messageId);
+        console.log('message:');
+        console.log(_this.message);
+        console.log('username: ' + _this.username);
+
+        if (Array.isArray(_this.files) && _this.files.length) {
+          console.log('filesPath: ' + _this.filesPath);
+          console.log('files:');
+          console.log(_this.files);
+        }
+      });
     }
   },
   computed: {

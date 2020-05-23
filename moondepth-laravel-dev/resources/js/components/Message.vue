@@ -29,39 +29,71 @@
 <script>
     export default {
         props: {
-            message: {
-                type: Object,
-                required: true,
-            },
-            username: {
+            // message: {
+            //     type: Object,
+            //     required: true,
+            // },
+            // username: {
+            //     type: String,
+            //     required: true,
+            // },
+            // filesPath: {
+            //     type: String,
+            //     required: false,
+            //     default: ''
+            // },
+            // files: {
+            //     type: Array,
+            //     required: false,
+            // },
+            boardId: {
                 type: String,
-                required: true,
+                required: true
             },
-            filesPath: {
-                type: String,
-                required: false,
-                default: ''
+            threadId: {
+                type: Number,
+                required: true
             },
-            files: {
-                type: Array,
-                required: false,
-            },
+            messageId: {
+                type: Number,
+                required: true
+            }
+        },
+        data: function() {
+            return {
+                message: "",
+                username: "",
+                filesPath: "",
+                files: []
+            }
         },
         mounted() {
             this.update();
         },
         methods: {
             update: function () {
-                console.log('message:');
-                console.log(this.message);
-                console.log('username:');
-                console.log(this.username);
-                if(Array.isArray(this.files) && this.files.length) {
-                    console.log('filesPath:');
-                    console.log(this.filesPath);
-                    console.log('files:');
-                    console.log(this.files);
-                }
+                axios.post('/board/' + this.boardId + '/thread/' + this.threadId + '/message/' + this.messageId +'/get').then((response) => {
+                    let data = response.data;
+                    console.log('data');
+                    console.log(data);
+                    this.message = data.message;
+                    this.username = data.user.username;
+                    this.files = data.files;
+                    if(Array.isArray(this.files) && this.files.length) {
+                        this.filesPath = data.filesPath;
+                        this.files = data.files;
+                    }
+
+                    console.log('board: ' + this.boardId + ' ' + 'thread: ' + this.threadId + ' ' + 'message: ' + this.messageId);
+                    console.log('message:');
+                    console.log(this.message);
+                    console.log('username: ' + this.username);
+                    if(Array.isArray(this.files) && this.files.length) {
+                        console.log('filesPath: ' + this.filesPath);
+                        console.log('files:');
+                        console.log(this.files);
+                    }
+                });
             }
         },
         computed: {
