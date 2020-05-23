@@ -2062,15 +2062,21 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     update: function update() {
+      console.log('message:');
       console.log(this.message);
+      console.log('username:');
       console.log(this.username);
-      console.log(this.filesPath);
-      console.log(this.files);
+
+      if (Array.isArray(this.files) && this.files.length) {
+        console.log('filesPath:');
+        console.log(this.filesPath);
+        console.log('files:');
+        console.log(this.files);
+      }
     }
   },
   computed: {
     src: function src() {
-      console.log(this.filesPath);
       return this.filesPath;
     }
   }
@@ -2100,8 +2106,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {// console.log('Component mounted.')
-  },
   props: {
     src: {
       type: String,
@@ -2149,7 +2153,23 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  methods: {}
+  mounted: function mounted() {
+    this.update();
+  },
+  methods: {
+    update: function update() {
+      console.log('src:');
+      console.log(this.src);
+      console.log('alt:');
+      console.log(this.alt);
+      console.log('size:');
+      console.log(this.size);
+      console.log('width:');
+      console.log(this.width);
+      console.log('height:');
+      console.log(this.height);
+    }
+  }
 });
 
 /***/ }),
@@ -37879,10 +37899,10 @@ var render = function() {
                       _c("message-image", {
                         attrs: {
                           src: _vm.src + file["s3_path"],
-                          alt: "file['original_name']",
-                          size: "file['size']",
-                          width: "file['width']",
-                          height: "file['height']"
+                          alt: "" + file["original_name"],
+                          size: "" + file["size"],
+                          width: "" + file["width"],
+                          height: "" + file["height"]
                         }
                       })
                     ],

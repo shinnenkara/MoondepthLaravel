@@ -12,9 +12,6 @@
 
 <script>
     export default {
-        mounted() {
-            // console.log('Component mounted.')
-        },
         props: {
             src: {
                 type: String,
@@ -59,7 +56,22 @@
                 }
             }
         },
+        mounted() {
+            this.update();
+        },
         methods: {
+            update: function () {
+                console.log('src:');
+                console.log(this.src);
+                console.log('alt:');
+                console.log(this.alt);
+                console.log('size:');
+                console.log(this.size);
+                console.log('width:');
+                console.log(this.width);
+                console.log('height:');
+                console.log(this.height);
+            }
         },
     }
 </script>
