@@ -55,7 +55,7 @@ class MessageController extends Controller
      * Get the specified resource.
      *
      * @param  \App\Message  $message
-     * @return array
+     * @return array|false|string
      */
     public function get($board, $thread, Message $message)
     {
@@ -67,18 +67,18 @@ class MessageController extends Controller
             $files = $message->files;
         }
 
-        return json_encode(array('message' => json_encode($message), 'user' => json_encode($user), 'filesPath' => $filesPath, 'files' => json_encode($files)));
+        return array('message' => $message, 'user' => $user, 'filesPath' => $filesPath, 'files' => $files);
     }
 
     /**
      * Get all specified resources.
      *
      * @param  \App\Thread  $thread
-     * @return array
+     * @return array|false|string
      */
-    public function all(Thread $thread)
+    public function all($board, Thread $thread)
     {
-        $messages = $thread->messages();
+        $messages = $thread->messages;
 
         return array('messages' => $messages);
     }

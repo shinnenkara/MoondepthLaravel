@@ -29,23 +29,6 @@
 <script>
     export default {
         props: {
-            // message: {
-            //     type: Object,
-            //     required: true,
-            // },
-            // username: {
-            //     type: String,
-            //     required: true,
-            // },
-            // filesPath: {
-            //     type: String,
-            //     required: false,
-            //     default: ''
-            // },
-            // files: {
-            //     type: Array,
-            //     required: false,
-            // },
             boardId: {
                 type: String,
                 required: true
@@ -76,12 +59,11 @@
                     let data = response.data;
                     console.log('data');
                     console.log(data);
-                    this.message = JSON.parse(data.message);
-                    this.user = JSON.parse(data.user);
-                    this.files = Object.values(JSON.parse(data.files));
-                    if(Array.isArray(this.files) && this.files.length) {
+                    this.message = data.message;
+                    this.user = data.user;
+                    if(Array.isArray(data.files) && data.files.length) {
                         this.filesPath = data.filesPath;
-                        this.files = Object.values(JSON.parse(data.files));
+                        this.files = data.files;
                     }
 
                     console.log('board: ' + this.boardId + ' ' + 'thread: ' + this.threadId + ' ' + 'message: ' + this.messageId);

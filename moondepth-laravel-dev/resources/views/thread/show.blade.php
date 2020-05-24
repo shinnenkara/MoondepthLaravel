@@ -163,13 +163,6 @@
             </form>
         </div>
     </div>
-    <div class="thread-messages">
-        <div class="row">
-            @foreach($thread->messages as $message)
-{{--            <message :message='{!! json_encode($message) !!}' :username='{!! json_encode(ucfirst(strtolower($message->user->username))) !!}' @if(!$message->files->isEmpty()) :files-path="'{!! substr(Storage::disk('s3')->url('/'), 0, -1) !!}'" :files='{!! json_encode($message->files) !!}' @endif></message>--}}
-                <message :board-id="'{!! $thread->board->headline !!}'" :thread-id="{!! $thread->id !!}" :message-id="{!! $message->id !!}"></message>
-            @endforeach
-        </div>
-    </div>
+    <thread-messages :board-id="'{!! $thread->board->headline !!}'" :thread-id="{!! $thread->id !!}"></thread-messages>
 </div>
 @endsection

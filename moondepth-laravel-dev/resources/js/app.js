@@ -27,7 +27,8 @@ Vue.component('create-message', require('./components/CreateMessage.vue').defaul
 Vue.component('message-image', require('./components/MessageImage.vue').default);
 Vue.component('thread-image', require('./components/ThreadImage.vue').default);
 
-Vue.component('message', require('./components/Message.vue').default);
+Vue.component('thread-messages', require('./components/ThreadMessages.vue').default);
+Vue.component('thread-message', require('./components/ThreadMessage.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
