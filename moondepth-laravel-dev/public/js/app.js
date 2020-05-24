@@ -2071,8 +2071,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      message: "",
-      username: "",
+      message: [],
+      user: '',
       filesPath: "",
       files: []
     };
@@ -2088,19 +2088,19 @@ __webpack_require__.r(__webpack_exports__);
         var data = response.data;
         console.log('data');
         console.log(data);
-        _this.message = data.message;
-        _this.username = data.user.username;
-        _this.files = data.files;
+        _this.message = JSON.parse(data.message);
+        _this.user = JSON.parse(data.user);
+        _this.files = Object.values(JSON.parse(data.files));
 
         if (Array.isArray(_this.files) && _this.files.length) {
           _this.filesPath = data.filesPath;
-          _this.files = data.files;
+          _this.files = Object.values(JSON.parse(data.files));
         }
 
         console.log('board: ' + _this.boardId + ' ' + 'thread: ' + _this.threadId + ' ' + 'message: ' + _this.messageId);
         console.log('message:');
         console.log(_this.message);
-        console.log('username: ' + _this.username);
+        console.log('username: ' + _this.user);
 
         if (Array.isArray(_this.files) && _this.files.length) {
           console.log('filesPath: ' + _this.filesPath);
@@ -37899,7 +37899,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("h5", { staticClass: "content grey-text text-lighten-1" }, [
-          _vm._v(_vm._s(this.username))
+          _vm._v(_vm._s(this.user.username))
         ]),
         _vm._v(" "),
         _c("h5", { staticClass: "content" }, [

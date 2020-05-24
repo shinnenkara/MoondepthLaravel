@@ -2,7 +2,7 @@
     <div :id="'message-' + this.message.id" class="message col l11 m11 s12">
         <div class="message-head">
             <i class="material-icons hidemessage-icons">arrow_drop_down</i>
-            <h5 class="content grey-text text-lighten-1">{{ this.username }}</h5>
+            <h5 class="content grey-text text-lighten-1">{{ this.user.username }}</h5>
             <h5 class="content">{{ this.message.created_at }}</h5>
             <a class="white-text" :href="'#m-' + this.message.id ">
                 <h5 class="content">No. {{ this.message.id }}</h5></a>
@@ -61,8 +61,8 @@
         },
         data: function() {
             return {
-                message: "",
-                username: "",
+                message: [],
+                user: '',
                 filesPath: "",
                 files: []
             }
@@ -76,18 +76,18 @@
                     let data = response.data;
                     console.log('data');
                     console.log(data);
-                    this.message = data.message;
-                    this.username = data.user.username;
-                    this.files = data.files;
+                    this.message = JSON.parse(data.message);
+                    this.user = JSON.parse(data.user);
+                    this.files = Object.values(JSON.parse(data.files));
                     if(Array.isArray(this.files) && this.files.length) {
                         this.filesPath = data.filesPath;
-                        this.files = data.files;
+                        this.files = Object.values(JSON.parse(data.files));
                     }
 
                     console.log('board: ' + this.boardId + ' ' + 'thread: ' + this.threadId + ' ' + 'message: ' + this.messageId);
                     console.log('message:');
                     console.log(this.message);
-                    console.log('username: ' + this.username);
+                    console.log('username: ' + this.user);
                     if(Array.isArray(this.files) && this.files.length) {
                         console.log('filesPath: ' + this.filesPath);
                         console.log('files:');

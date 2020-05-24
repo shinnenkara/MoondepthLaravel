@@ -59,7 +59,7 @@ class MessageController extends Controller
      */
     public function get($board, $thread, Message $message)
     {
-        $user = $message->user();
+        $user = $message->user;
         $filesPath = substr(Storage::disk('s3')->url('/'), 0, -1);
         $files = array();
 
