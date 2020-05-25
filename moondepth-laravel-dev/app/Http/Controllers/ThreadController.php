@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewMessage;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use App\Thread;
@@ -48,9 +49,9 @@ class ThreadController extends Controller
         $data_validator = Validator::make(request()->all(), [
             // 'username' => 'required',
             'message_text' => 'required',
-            'g-recaptcha-response' => 'required|recaptcha'
+//            'g-recaptcha-response' => 'required|recaptcha'
         ],[
-            'g-recaptcha-response.*' => 'Please ensure that you are a human!'
+//            'g-recaptcha-response.*' => 'Please ensure that you are a human!'
         ]);
 
         if ($data_validator->fails()) {
@@ -124,6 +125,8 @@ class ThreadController extends Controller
                 'size' => $image_size
             ];
             $file = MessageFile::create($file_data);
+
+            event(new NewMessage());
         }
 
         return redirect(route('thread.show', ['board' => $board_headline, 'thread' => $thread->id]));
@@ -178,5 +181,19 @@ class ThreadController extends Controller
     public function destroy(Thread $thread)
     {
         //
+    }
+
+    /**
+     * Event
+     *
+     * @param  \App\Thread  $thread
+     * @param  \Illuminate\Http\Request  $request
+     * @return array|false|\Illuminate\Http\Response|string
+     */
+    public function newMessageEvent(Request $request, $board_headline, Thread $thread)
+    {
+        $messages = $thread->messages;
+
+        return array('messages' => $messages);
     }
 }

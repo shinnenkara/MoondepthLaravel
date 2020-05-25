@@ -28,3 +28,5 @@ Route::post('/board/{board}/thread/{thread}', 'ThreadController@store')->name('t
 
 Route::post('/board/{board}/thread/{thread}/message/all', 'MessageController@all')->name('message.all');
 Route::post('/board/{board}/thread/{thread}/message/{message}/get', 'MessageController@get')->name('message.get');
+
+Route::post('/board/{board}/thread/{thread}/event/new-message', 'ThreadController@newMessageEvent')->name('thread.event.new-message');
