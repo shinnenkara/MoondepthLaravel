@@ -310,3 +310,7 @@ li ol > li {
 li ol > li:before {
     content: counters(item, ".") " ";
 }
+
+.card {
+    background-color: #212121;
+}
