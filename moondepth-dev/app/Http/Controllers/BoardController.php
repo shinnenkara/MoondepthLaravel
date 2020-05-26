@@ -69,7 +69,8 @@ class BoardController extends Controller
             ],[
                 'file_input.max' => 'Only 3 files are allowed.',
                 'file_input.*.image' => 'Only jpeg, png, bmp, gif, or svg are allowed.',
-                'file_input.*.max' => 'Sorry! Maximum allowed size for an image is 2MB.',
+                'file_input.*' => 'Sorry! Maximum allowed size for an image is 2MB.',
+//                'file_input.*.max' => 'Sorry! Maximum allowed size for an image is 2MB.',
             ]);
             if ($requested_validator->fails()) {
                 return redirect()
