@@ -40,7 +40,7 @@ class ThreadController extends Controller
      * Store the new application message and redirect to @show.
      *
      * @store \App\Message
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Contracts\Support\Renderable|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store($board_headline, Thread $thread) {
 
@@ -113,7 +113,7 @@ class ThreadController extends Controller
             $intervention_image = Image::make($requested_file->getPathname());
             $image_width = $intervention_image->width();
             $image_height = $intervention_image->height();
-            $image_size = $requested_file->getClientSize();
+            $image_size = $requested_file->getSize();
             $file_data = [
                 'mid' => $message->id,
                 's3_path' => $image_path,
@@ -181,19 +181,5 @@ class ThreadController extends Controller
     public function destroy(Thread $thread)
     {
         //
-    }
-
-    /**
-     * Event
-     *
-     * @param  \App\Thread  $thread
-     * @param  \Illuminate\Http\Request  $request
-     * @return array|false|\Illuminate\Http\Response|string
-     */
-    public function newMessageEvent(Request $request, $board_headline, Thread $thread)
-    {
-        $messages = $thread->messages;
-
-        return array('messages' => $messages);
     }
 }

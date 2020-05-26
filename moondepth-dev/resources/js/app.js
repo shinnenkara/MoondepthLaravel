@@ -11,15 +11,6 @@ require('./materialize.min');
 
 window.Vue = require('vue');
 
-import Echo from "laravel-echo"
-
-window.io = require('socket.io-client');
-
-window.Echo = new Echo({
-    broadcaster: 'socket.io',
-    host: window.location.hostname + ':3000'
-});
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

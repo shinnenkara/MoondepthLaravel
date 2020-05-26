@@ -36,7 +36,7 @@ class BoardController extends Controller
      * Store the new application thread and redirect to @show.
      *
      * @store \App\Thread
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Contracts\Support\Renderable|\Illuminate\Http\RedirectResponse
      */
     public function store(Board $board) {
 
@@ -46,9 +46,9 @@ class BoardController extends Controller
             // 'username' => 'required',
             'topic' => 'required',
             'subject_text' => 'required',
-            'g-recaptcha-response' => 'required|recaptcha'
+//            'g-recaptcha-response' => 'required|recaptcha'
         ],[
-            'g-recaptcha-response.*' => 'Please ensure that you are a human!'
+//            'g-recaptcha-response.*' => 'Please ensure that you are a human!'
         ]);
 
         if ($data_validator->fails()) {
@@ -101,7 +101,7 @@ class BoardController extends Controller
             $intervention_image = Image::make($requested_file->getPathname());
             $image_width = $intervention_image->width();
             $image_height = $intervention_image->height();
-            $image_size = $requested_file->getClientSize();
+            $image_size = $requested_file->getSize();
             $file_data = [
                 'tid' => $thread->id,
                 's3_path' => $image_path,

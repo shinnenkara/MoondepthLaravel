@@ -2376,9 +2376,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     boardId: {
@@ -2393,8 +2390,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       messages: [],
-      host: 'http://localhost',
-      port: '3000',
       eventRoot: 'thread',
       eventName: 'new-message',
       eventApp: 'NewMessage',
@@ -2404,20 +2399,6 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    // this.socket = io(this.host + ':' + this.port);
-    // console.log('socket.io:');
-    // console.log(this.host + ':' + this.port);
-    //
-    // let app = this;
-    // console.log('event-channel:');
-    // console.log(this.eventName + ':' + this.eventApp);
-    // this.socket.on(this.eventName + ':' + this.eventApp, function(data) {
-    //     console.log('event-data:');
-    //     console.log(data);
-    //     app.update();
-    // });
-    // console.log('socket on:');
-    // console.log(this.eventName + ':' + this.eventApp);
     Echo.channel('redis' + '.' + this.eventRoot + '.' + this.threadId + '.' + this.eventName).listen(this.eventApp, function (e) {
       _this.update();
     });
@@ -2442,8 +2423,7 @@ __webpack_require__.r(__webpack_exports__);
         if (Array.isArray(_this2.messages) && _this2.messages.length) {
           console.log('messages:');
           console.log(_this2.messages);
-        } // this.socket.emit('socket-messages-update');
-
+        }
       });
     }
   }
@@ -50014,29 +49994,24 @@ var render = function() {
       _c("div", { staticClass: "message-body" }, [
         Array.isArray(this.files) && this.files.length
           ? _c("div", [
-              _c(
-                "div",
-                { staticClass: "message-files" },
-                _vm._l(this.files, function(file, index) {
-                  return _c(
-                    "div",
-                    { staticClass: "row" },
-                    [
-                      _c("message-image", {
-                        attrs: {
-                          src: _vm.src + file["s3_path"],
-                          alt: "" + file["original_name"],
-                          size: "" + file["size"],
-                          width: "" + file["width"],
-                          height: "" + file["height"]
-                        }
-                      })
-                    ],
-                    1
-                  )
-                }),
-                0
-              )
+              _c("div", { staticClass: "message-files" }, [
+                _c(
+                  "div",
+                  { staticClass: "row" },
+                  _vm._l(this.files, function(file, index) {
+                    return _c("message-image", {
+                      attrs: {
+                        src: _vm.src + file["s3_path"],
+                        alt: "" + file["original_name"],
+                        size: "" + file["size"],
+                        width: "" + file["width"],
+                        height: "" + file["height"]
+                      }
+                    })
+                  }),
+                  1
+                )
+              ])
             ])
           : _vm._e(),
         _vm._v(" "),
@@ -50082,43 +50057,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "thread-messages" },
-    [
-      _c("div", { staticClass: "input-field" }, [
-        _c(
-          "button",
-          {
-            staticClass:
-              "white-text waves-effect waves-light grey darken-3 btn-large",
-            on: { click: this.update }
-          },
-          [_vm._v("Refresh")]
+  return _c("div", { staticClass: "thread-messages" }, [
+    Array.isArray(_vm.messages) && _vm.messages.length
+      ? _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.messages, function(message, index) {
+            return _c("thread-message", {
+              attrs: {
+                "board-id": _vm.boardId,
+                "thread-id": _vm.threadId,
+                "message-id": message.id
+              }
+            })
+          }),
+          1
         )
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.messages, function(message, index) {
-        return Array.isArray(_vm.messages) && _vm.messages.length
-          ? _c(
-              "div",
-              { staticClass: "row" },
-              [
-                _c("thread-message", {
-                  attrs: {
-                    "board-id": _vm.boardId,
-                    "thread-id": _vm.threadId,
-                    "message-id": message.id
-                  }
-                })
-              ],
-              1
-            )
-          : _vm._e()
-      })
-    ],
-    2
-  )
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -62373,12 +62329,9 @@ module.exports = yeast;
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -62391,12 +62344,6 @@ __webpack_require__(/*! ./init */ "./resources/js/init.js");
 __webpack_require__(/*! ./materialize.min */ "./resources/js/materialize.min.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-
-window.io = __webpack_require__(/*! socket.io-client */ "./node_modules/socket.io-client/lib/index.js");
-window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
-  broadcaster: 'socket.io',
-  host: window.location.hostname + ':3000'
-});
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -62430,9 +62377,12 @@ var app = new Vue({
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
   \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -62460,14 +62410,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.
  */
-// import Echo from 'laravel-echo';
-// window.Pusher = require('pusher-js');
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
-// });
+
+
+window.io = __webpack_require__(/*! socket.io-client */ "./node_modules/socket.io-client/lib/index.js");
+window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
+  broadcaster: 'socket.io',
+  host: window.location.hostname + ':3000'
+});
 
 /***/ }),
 
