@@ -26,7 +26,8 @@
                 messages: [],
                 host: 'http://localhost',
                 port: '3000',
-                eventName: 'thread-action',
+                eventRoot: 'thread',
+                eventName: 'new-message',
                 eventApp: 'NewMessage',
                 socket: null
             }
@@ -47,7 +48,7 @@
             // console.log('socket on:');
             // console.log(this.eventName + ':' + this.eventApp);
 
-            Echo.channel('moondepth_database_' + this.eventName)
+            Echo.channel('redis' + '.' + this.eventRoot + '.' + this.threadId + '.' + this.eventName)
                 .listen(this.eventApp, (e) => {
                     this.update();
                 });

@@ -34,7 +34,7 @@ class NewMessage implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['thread-action'];
+        return ["thread." . $this->thread->id . ".new-message"];
 //        return new PrivateChannel('channel-name');
     }
 }

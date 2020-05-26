@@ -2395,7 +2395,8 @@ __webpack_require__.r(__webpack_exports__);
       messages: [],
       host: 'http://localhost',
       port: '3000',
-      eventName: 'thread-action',
+      eventRoot: 'thread',
+      eventName: 'new-message',
       eventApp: 'NewMessage',
       socket: null
     };
@@ -2417,7 +2418,7 @@ __webpack_require__.r(__webpack_exports__);
     // });
     // console.log('socket on:');
     // console.log(this.eventName + ':' + this.eventApp);
-    Echo.channel('moondepth_database_' + this.eventName).listen(this.eventApp, function (e) {
+    Echo.channel('redis' + '.' + this.eventRoot + '.' + this.threadId + '.' + this.eventName).listen(this.eventApp, function (e) {
       _this.update();
     });
     this.update();
