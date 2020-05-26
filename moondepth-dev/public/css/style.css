@@ -275,6 +275,10 @@ a:hover, a:focus {
     border-style: solid;
     border-width: 1px;
 }
+.message-text {
+    margin-bottom: 20px;
+}
+
 #back-button {
     text-align: left;
     margin: 0.75rem 1.5rem 1.5rem 1.5rem;

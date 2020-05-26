@@ -1,7 +1,8 @@
 <template>
     <div class="thread-messages">
         <div class="row" v-if="Array.isArray(messages) && messages.length">
-            <thread-message v-for="(message, index) in messages" :board-id="boardId" :thread-id="threadId" :message-id="message.id"></thread-message>
+            <thread-message v-for="message in messages" v-bind:data="message"
+                            v-bind:key="message.id" :board-id="boardId" :thread-id="threadId" :message-id="message.id"></thread-message>
         </div>
     </div>
 </template>

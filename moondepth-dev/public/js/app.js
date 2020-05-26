@@ -2282,6 +2282,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     boardId: {
@@ -2368,6 +2370,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -49994,24 +49997,29 @@ var render = function() {
       _c("div", { staticClass: "message-body" }, [
         Array.isArray(this.files) && this.files.length
           ? _c("div", [
-              _c("div", { staticClass: "message-files" }, [
-                _c(
-                  "div",
-                  { staticClass: "row" },
-                  _vm._l(this.files, function(file, index) {
-                    return _c("message-image", {
-                      attrs: {
-                        src: _vm.src + file["s3_path"],
-                        alt: "" + file["original_name"],
-                        size: "" + file["size"],
-                        width: "" + file["width"],
-                        height: "" + file["height"]
-                      }
-                    })
-                  }),
-                  1
-                )
-              ])
+              _c(
+                "div",
+                { staticClass: "message-files" },
+                _vm._l(this.files, function(file, index) {
+                  return _c(
+                    "div",
+                    { staticClass: "row" },
+                    [
+                      _c("message-image", {
+                        attrs: {
+                          src: _vm.src + file["s3_path"],
+                          alt: "" + file["original_name"],
+                          size: "" + file["size"],
+                          width: "" + file["width"],
+                          height: "" + file["height"]
+                        }
+                      })
+                    ],
+                    1
+                  )
+                }),
+                0
+              )
             ])
           : _vm._e(),
         _vm._v(" "),
@@ -50029,7 +50037,9 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _c("h5", [_vm._v(_vm._s(this.message.text))])
+          _c("div", { staticClass: "message-text" }, [
+            _c("h5", [_vm._v(_vm._s(this.message.text))])
+          ])
         ])
       ])
     ]
@@ -50062,9 +50072,11 @@ var render = function() {
       ? _c(
           "div",
           { staticClass: "row" },
-          _vm._l(_vm.messages, function(message, index) {
+          _vm._l(_vm.messages, function(message) {
             return _c("thread-message", {
+              key: message.id,
               attrs: {
+                data: message,
                 "board-id": _vm.boardId,
                 "thread-id": _vm.threadId,
                 "message-id": message.id

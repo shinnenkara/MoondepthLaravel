@@ -10,8 +10,8 @@
         <div class="message-body">
             <div v-if="Array.isArray(this.files) && this.files.length">
                 <div class="message-files">
-                    <div class="row">
-                        <message-image v-for="(file, index) in this.files" :src="src + file['s3_path']" :alt="'' + file['original_name']" :size="'' + file['size']" :width="'' + file['width']" :height="'' + file['height']"></message-image>
+                    <div class="row" v-for="(file, index) in this.files">
+                        <message-image :src="src + file['s3_path']" :alt="'' + file['original_name']" :size="'' + file['size']" :width="'' + file['width']" :height="'' + file['height']"></message-image>
                     </div>
                 </div>
             </div>
@@ -20,7 +20,9 @@
                 <a class="white-text" :href="'#message-' + this.message.response_to">
                     <h6>{{ '>>' + this.message.response_to }}</h6></a>
                 </div>
-                <h5>{{ this.message.text }}</h5>
+                <div class="message-text">
+                    <h5>{{ this.message.text }}</h5>
+                </div>
             </div>
         </div>
     </div>
