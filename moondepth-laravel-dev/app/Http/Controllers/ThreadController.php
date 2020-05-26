@@ -125,9 +125,9 @@ class ThreadController extends Controller
                 'size' => $image_size
             ];
             $file = MessageFile::create($file_data);
-
-            event(new NewMessage());
         }
+
+        event(new NewMessage($thread));
 
         return redirect(route('thread.show', ['board' => $board_headline, 'thread' => $thread->id]));
     }

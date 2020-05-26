@@ -2363,6 +2363,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     boardId: {
@@ -2380,17 +2383,18 @@ __webpack_require__.r(__webpack_exports__);
       host: 'http://localhost',
       port: '3000',
       eventName: 'thread-action',
-      eventApp: 'App\\Events\\NewMessage'
+      eventApp: 'App\\Events\\NewMessage',
+      socket: null
     };
   },
   mounted: function mounted() {
-    var socket = io(this.host + ':' + this.port);
+    this.socket = io(this.host + ':' + this.port);
     console.log('socket.io:');
     console.log(this.host + ':' + this.port);
     var app = this;
-    socket.on(this.eventName + ':' + this.eventApp, function (data) {
-      console.log('event-channel:');
-      console.log(this.eventName + ':' + this.eventApp);
+    console.log('event-channel:');
+    console.log(this.eventName + ':' + this.eventApp);
+    this.socket.on(this.eventName + ':' + this.eventApp, function (data) {
       console.log('event-data:');
       console.log(data);
       app.update();
@@ -2419,6 +2423,8 @@ __webpack_require__.r(__webpack_exports__);
           console.log('messages:');
           console.log(_this.messages);
         }
+
+        _this.socket.emit('socket-messages-update');
       });
     }
   }
@@ -47694,25 +47700,39 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "thread-messages" },
-    _vm._l(_vm.messages, function(message, index) {
-      return Array.isArray(_vm.messages) && _vm.messages.length
-        ? _c(
-            "div",
-            { staticClass: "row" },
-            [
-              _c("thread-message", {
-                attrs: {
-                  "board-id": _vm.boardId,
-                  "thread-id": _vm.threadId,
-                  "message-id": message.id
-                }
-              })
-            ],
-            1
-          )
-        : _vm._e()
-    }),
-    0
+    [
+      _c("div", { staticClass: "input-field" }, [
+        _c(
+          "button",
+          {
+            staticClass:
+              "white-text waves-effect waves-light grey darken-3 btn-large",
+            on: { click: this.update }
+          },
+          [_vm._v("Refresh")]
+        )
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.messages, function(message, index) {
+        return Array.isArray(_vm.messages) && _vm.messages.length
+          ? _c(
+              "div",
+              { staticClass: "row" },
+              [
+                _c("thread-message", {
+                  attrs: {
+                    "board-id": _vm.boardId,
+                    "thread-id": _vm.threadId,
+                    "message-id": message.id
+                  }
+                })
+              ],
+              1
+            )
+          : _vm._e()
+      })
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -59968,9 +59988,12 @@ module.exports = yeast;
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'laravel-echo'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -59983,6 +60006,12 @@ __webpack_require__(/*! ./init */ "./resources/js/init.js");
 __webpack_require__(/*! ./materialize.min */ "./resources/js/materialize.min.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
+window.io = __webpack_require__(/*! socket.io-client */ "./node_modules/socket.io-client/lib/index.js");
+window.Echo = new !(function webpackMissingModule() { var e = new Error("Cannot find module 'laravel-echo'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())({
+  broadcaster: 'socket.io',
+  host: window.location.hostname + ':3000'
+});
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -60028,7 +60057,6 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 try {
   window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js")["default"];
   window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-  window.io = __webpack_require__(/*! socket.io-client */ "./node_modules/socket.io-client/lib/index.js");
 
   __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 } catch (e) {}

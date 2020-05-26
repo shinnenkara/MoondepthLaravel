@@ -138,5 +138,7 @@
             <span>Made by <a class="grey-text grey-lighten-3" href="https://t.me/kara_sick">kara_sick</a></span>
         </div>
     </footer>
+
+    @stack('secondary-scripts')
 </body>
 </html>

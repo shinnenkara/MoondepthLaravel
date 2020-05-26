@@ -166,3 +166,5 @@
     <thread-messages :board-id="'{!! $thread->board->headline !!}'" :thread-id="{!! $thread->id !!}"></thread-messages>
 </div>
 @endsection
+@push('secondary-scripts')
+@endpush
