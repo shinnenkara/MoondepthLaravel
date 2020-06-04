@@ -8,7 +8,7 @@
 <meta name="author" content="Kara Sick">
 <meta name="keywords" content="Moondepth,imageboard,forum,messenger,about,space,kara_sick,2019">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="{{ 'Help — ' . config('app.name', 'Laravel') . ' — Space for your message' }}" />
+<meta property="og:title" content="{{ 'About — ' . config('app.name', 'Laravel') . ' — Space for your message' }}" />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="//moondepth.space/img/png/moondepth.dark.logo.png" />
 <meta property="og:image:secure_url" content="{{ asset('img/png/moondepth.dark.logo.png') }}" />

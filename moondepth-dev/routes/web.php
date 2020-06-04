@@ -21,6 +21,11 @@ Route::get('/about', 'AboutController@index')->name('about.index');
 Route::get('/help', 'HelpController@index')->name('help.index');
 Route::get('/rules', 'RulesController@index')->name('rules.index');
 
+Route::get('/search', function () {
+    return redirect()->back();
+});
+Route::post('/search', 'SearchController@index')->name('search.index');
+
 Route::get('/board/{board}', 'BoardController@show')->name('board.show');
 Route::post('/board/{board}', 'BoardController@store')->name('board.store');
 

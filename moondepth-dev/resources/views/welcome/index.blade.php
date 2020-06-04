@@ -24,8 +24,21 @@
 <div class="container center">
     <h1><strong>Welcome fellow man</strong></h1>
 </div>
+
 <div class="center">
     <div class="row">
+        <form action="{{ route('search.index') }}" method="POST">
+            @csrf
+            <div class="input-field col s12">
+                <input class="white-text" id="search" type="text" name="search" >
+                <label for="first_name">Search</label>
+                @error('search')
+                <span class="invalid-feedback text-left" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                @enderror
+            </div>
+        </form>
         <div class="col s12 m6 l4">
             <h2><i>Big Board:</i></h2><br/>
             <a href="{{ route('board.show', ['board' => $big_board->headline]) }}" class="text-primary">/{{ $big_board->headline }}/ - {{ $big_board->description }}</a>
