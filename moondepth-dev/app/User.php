@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -36,20 +36,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    /**
-     * Get the threads for the defined thread.
-     */
-    public function threads()
-    {
-        return $this->hasMany('\App\Thread', "uid");
-    }
-
-    /**
-     * Get the messages for the defined thread.
-     */
-    public function messages()
-    {
-        return $this->hasMany('\App\Message', "uid");
-    }
 }
