@@ -2,15 +2,168 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1897cd82-2baa-418d-b42d-792b2a131265" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/MoondepthLaravel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MoondepthLaravel.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/.styleci.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Board.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Console/Kernel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Events/NewMessage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Events/NewThread.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Exceptions/Handler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Controllers/AboutController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Controllers/Auth/ConfirmPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Controllers/BoardController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Controllers/HelpController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Controllers/MessageController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Controllers/RulesController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Controllers/SearchController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Controllers/ThreadController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Controllers/WelcomeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Kernel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Middleware/CheckForMaintenanceMode.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Middleware/EncryptCookies.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Middleware/TrimStrings.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Middleware/TrustHosts.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Middleware/TrustProxies.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Message.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/MessageFile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Providers/BroadcastServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/Thread.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/ThreadFile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/app/User.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/artisan" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/bootstrap/app.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/bootstrap/cache/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/composer.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/config/app.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/config/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/config/broadcasting.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/config/cache.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/config/cors.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/config/database.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/config/filesystems.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/config/hashing.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/config/logging.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/config/mail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/config/queue.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/config/services.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/config/session.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/config/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/database/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/database/factories/UserFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/laravel-echo-server.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/phpunit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/public/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/public/css/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/public/css/materialize.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/public/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/public/img/ico/moondepth.dark.logo.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/public/img/ico/moondepth.white.logo.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/public/img/png/moondepth.dark.logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/public/img/png/moondepth.white.logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/public/img/png/site_screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/public/img/svg/moondepth.dark.logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/public/img/svg/moondepth.white.logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/public/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/public/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/public/js/app.js.LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/public/mix-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/js/components/CreateMessage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/js/components/CreateThread.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/js/components/MessageImage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/js/components/ThreadImage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/js/components/ThreadMessage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/js/components/ThreadMessages.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/js/init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/js/jquery-3.4.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/js/materialize.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/lang/en/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/lang/en/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/lang/en/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/lang/en/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/sass/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/sass/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/about/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/auth/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/auth/passwords/email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/auth/register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/auth/verify.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/board/show.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/help/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/mails/user-response.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/rules/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/search/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/thread/show.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/vendor/laravel-sitemap/sitemap.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/vendor/laravel-sitemap/sitemapIndex/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/vendor/laravel-sitemap/sitemapIndex/sitemap.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/vendor/laravel-sitemap/url.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/vendor/pagination/bootstrap-4.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/vendor/pagination/default.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/vendor/pagination/materialize.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/vendor/pagination/semantic-ui.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/vendor/pagination/simple-bootstrap-4.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/vendor/pagination/simple-default.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/resources/views/welcome/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/routes/api.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/routes/channels.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/routes/console.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/routes/web.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/server.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/storage/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/storage/app/public/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/storage/framework/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/storage/framework/cache/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/storage/framework/cache/data/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/storage/framework/sessions/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/storage/framework/testing/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/storage/framework/views/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/storage/logs/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/tests/CreatesApplication.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/tests/Feature/ExampleTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/tests/TestCase.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/tests/Unit/ExampleTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moondepth-prod/webpack.mix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" doNotAsk="true">
     <pharConfigPath>$PROJECT_DIR$/moondepth-dev/composer.json</pharConfigPath>
     <execution>
       <executable />
@@ -241,8 +394,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\php\GitHub\MoondepthLaravel" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -255,6 +414,7 @@
       <option name="presentableId" value="Default" />
       <updated>1591739386141</updated>
       <workItem from="1591739389587" duration="661000" />
+      <workItem from="1591772960761" duration="632000" />
     </task>
     <servers />
   </component>
@@ -262,9 +422,9 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1591739389802">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1591773036887">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1591739389802" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1591773036887" />
   </component>
 </project>
