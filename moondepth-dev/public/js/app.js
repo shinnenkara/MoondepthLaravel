@@ -2350,10 +2350,35 @@ __webpack_require__.r(__webpack_exports__);
       var fullDate = new Date(this.message.created_at);
       var year = fullDate.getFullYear();
       var month = fullDate.getMonth();
+
+      if (month < 10) {
+        month = '0' + month;
+      }
+
       var day = fullDate.getDay();
+
+      if (day < 10) {
+        day = '0' + day;
+      }
+
       var hours = fullDate.getHours();
+
+      if (hours < 10) {
+        hours = '0' + hours;
+      }
+
       var minutes = fullDate.getMinutes();
+
+      if (minutes < 10) {
+        minutes = '0' + minutes;
+      }
+
       var seconds = fullDate.getSeconds();
+
+      if (seconds < 10) {
+        seconds = '0' + seconds;
+      }
+
       return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
     }
   }

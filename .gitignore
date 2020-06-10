@@ -2,3 +2,11 @@
 moondepth-dev/node_modules/
 
 moondepth-dev/vendor/
+
+moondepth-dev/.env
+
+.idea/
+
+moondepth-dev/storage/framework/
+
+moondepth-dev/storage/logs/

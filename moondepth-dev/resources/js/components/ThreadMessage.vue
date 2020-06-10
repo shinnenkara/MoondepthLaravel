@@ -92,10 +92,25 @@
                 let fullDate = new Date(this.message.created_at);
                 let year = fullDate.getFullYear();
                 let month = fullDate.getMonth();
+                if(month < 10) {
+                    month = '0' + month;
+                }
                 let day = fullDate.getDay();
+                if(day < 10) {
+                    day = '0' + day;
+                }
                 let hours = fullDate.getHours();
+                if(hours < 10) {
+                    hours = '0' + hours;
+                }
                 let minutes = fullDate.getMinutes();
+                if(minutes < 10) {
+                    minutes = '0' + minutes;
+                }
                 let seconds = fullDate.getSeconds();
+                if(seconds < 10) {
+                    seconds = '0' + seconds;
+                }
                 return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
             }
         }
