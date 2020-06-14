@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Message;
 use App\Thread;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
@@ -15,16 +16,19 @@ class NewMessage implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $thread;
+    protected $thread;
+
+    public $message;
 
     /**
      * Create a new event instance.
      *
      * @param array $data
      */
-    public function __construct(Thread $thread)
+    public function __construct(Thread $thread, Message $message)
     {
         $this->thread = $thread;
+        $this->message = $message;
     }
 
     /**

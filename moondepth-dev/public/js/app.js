@@ -2425,16 +2425,12 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    var _this = this;
-
-    Echo.channel('redis' + '.' + this.eventRoot + '.' + this.threadId + '.' + this.eventName).listen(this.eventApp, function (e) {
-      _this.update();
-    });
+    this.listen();
     this.update();
   },
   methods: {
     update: function update() {
-      var _this2 = this;
+      var _this = this;
 
       axios.post('/board/' + this.boardId + '/thread/' + this.threadId + '/message' + '/all').then(function (response) {
         var data = response.data;
@@ -2443,15 +2439,25 @@ __webpack_require__.r(__webpack_exports__);
 
         if (Array.isArray(data.messages) && data.messages.length) {
           console.log(data.messages);
-          _this2.messages = data.messages;
+          _this.messages = data.messages;
         }
 
-        console.log('board: ' + _this2.boardId + ' ' + 'thread: ' + _this2.threadId + '/message' + '/all');
+        console.log('board: ' + _this.boardId + ' ' + 'thread: ' + _this.threadId + '/message' + '/all');
 
-        if (Array.isArray(_this2.messages) && _this2.messages.length) {
+        if (Array.isArray(_this.messages) && _this.messages.length) {
           console.log('messages:');
-          console.log(_this2.messages);
+          console.log(_this.messages);
         }
+      });
+    },
+    listen: function listen() {
+      var _this2 = this;
+
+      Echo.channel('redis' + '.' + this.eventRoot + '.' + this.threadId + '.' + this.eventName).listen(this.eventApp, function (e) {
+        console.log('e:');
+        console.log(e);
+
+        _this2.messages.push(e.message);
       });
     }
   }
@@ -50034,15 +50040,17 @@ var render = function() {
                     "div",
                     { staticClass: "row" },
                     [
-                      _c("message-image", {
-                        attrs: {
-                          src: _vm.src + file["s3_path"],
-                          alt: "" + file["original_name"],
-                          size: "" + file["size"],
-                          width: "" + file["width"],
-                          height: "" + file["height"]
-                        }
-                      })
+                      index
+                        ? _c("message-image", {
+                            attrs: {
+                              src: _vm.src + file["s3_path"],
+                              alt: "" + file["original_name"],
+                              size: "" + file["size"],
+                              width: "" + file["width"],
+                              height: "" + file["height"]
+                            }
+                          })
+                        : _vm._e()
                     ],
                     1
                   )

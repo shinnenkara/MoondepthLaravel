@@ -29,11 +29,7 @@
             }
         },
         mounted() {
-            Echo.channel('redis' + '.' + this.eventRoot + '.' + this.threadId + '.' + this.eventName)
-                .listen(this.eventApp, (e) => {
-                    this.update();
-                });
-
+            this.listen();
             this.update();
         },
         methods: {
@@ -53,6 +49,14 @@
                         console.log('messages:');
                         console.log(this.messages);
                     }
+                });
+            },
+            listen: function () {
+                Echo.channel('redis' + '.' + this.eventRoot + '.' + this.threadId + '.' + this.eventName)
+                    .listen(this.eventApp, (e) => {
+                        console.log('e:');
+                        console.log(e);
+                        this.messages.push(e.message);
                 });
             }
         }

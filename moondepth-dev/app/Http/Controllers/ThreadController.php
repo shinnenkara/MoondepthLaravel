@@ -128,7 +128,7 @@ class ThreadController extends Controller
             $file = MessageFile::create($file_data);
         }
 
-        event(new NewMessage($thread));
+        event(new NewMessage($thread, $message));
 
         return redirect(route('thread.show', ['board' => $board_headline, 'thread' => $thread->id]));
     }

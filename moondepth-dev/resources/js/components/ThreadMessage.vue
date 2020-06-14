@@ -11,7 +11,7 @@
             <div v-if="Array.isArray(this.files) && this.files.length">
                 <div class="message-files">
                     <div class="row" v-for="(file, index) in this.files">
-                        <message-image :src="src + file['s3_path']" :alt="'' + file['original_name']" :size="'' + file['size']" :width="'' + file['width']" :height="'' + file['height']"></message-image>
+                        <message-image v-if="index" :src="src + file['s3_path']" :alt="'' + file['original_name']" :size="'' + file['size']" :width="'' + file['width']" :height="'' + file['height']"></message-image>
                     </div>
                 </div>
             </div>
