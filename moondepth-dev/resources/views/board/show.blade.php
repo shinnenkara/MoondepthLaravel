@@ -126,7 +126,7 @@
                 </div>
                 <div class="input-field col s12">
                     <button id="submit_input" class="white-text waves-effect waves-light grey darken-3 btn-large"
-                            type="submit" name="submit" value="send">Send</button>
+                            type="submit" name="submit" value="send">Create</button>
                 </div>
                 <div class="submit-check col s12">
                 </div>

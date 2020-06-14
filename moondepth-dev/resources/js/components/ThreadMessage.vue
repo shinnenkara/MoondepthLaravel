@@ -4,7 +4,7 @@
             <i class="material-icons hidemessage-icons">arrow_drop_down</i>
             <h5 class="content grey-text text-lighten-1">{{ username }}</h5>
             <h5 class="content">{{ createdAt }}</h5>
-            <a class="white-text" :href="'#m-' + this.message.id ">
+            <a class="white-text" :href="'#message-creation'" @click="this.reply">
                 <h5 class="content">No. {{ this.message.id }}</h5></a>
         </div>
         <div class="message-body">
@@ -78,6 +78,15 @@
                         console.log(this.files);
                     }
                 });
+            },
+            reply: function () {
+                let input = $("#response_to_input");
+                input.val(this.message.id);
+                let label = $("label[for=response_to_input]");
+                if(!label.hasClass('active')) {
+                    label.addClass('active a');
+                }
+                this.$root.$emit('openReply');
             }
         },
         computed: {

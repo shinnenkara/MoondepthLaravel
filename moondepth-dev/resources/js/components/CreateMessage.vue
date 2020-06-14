@@ -1,5 +1,5 @@
 <template>
-    <button id="message-creation-button" class="waves-effect waves-light grey darken-3 btn-large" @click="creationToggle" v-text="buttonText">
+    <button id="message-creation-button" class="waves-effect waves-light grey darken-3 btn-large mb-2" @click="creationToggle" v-text="buttonText">
     </button>
 </template>
 
@@ -13,6 +13,10 @@
             else {
                 // console.log('Component mounted without errors.');
             }
+
+            this.$root.$on('openReply', () => {
+                this.toggleOn();
+            });
         },
         props: {
             is_error: {
@@ -38,6 +42,11 @@
                     var shadow = document.getElementById("shadow");
                     $(shadow).slideToggle("slow");
                 });
+            },
+            toggleOn() {
+                if(!this.status) {
+                    this.creationToggle();
+                }
             }
         },
     }

@@ -1994,10 +1994,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
+    var _this = this;
+
     if (this.is_error) {
       this.creationToggle(); // console.log('Component mounted with some errors.');
     } else {// console.log('Component mounted without errors.');
       }
+
+    this.$root.$on('openReply', function () {
+      _this.toggleOn();
+    });
   },
   props: {
     is_error: {
@@ -2023,6 +2029,11 @@ __webpack_require__.r(__webpack_exports__);
         var shadow = document.getElementById("shadow");
         $(shadow).slideToggle("slow");
       });
+    },
+    toggleOn: function toggleOn() {
+      if (!this.status) {
+        this.creationToggle();
+      }
     }
   }
 });
@@ -2337,6 +2348,17 @@ __webpack_require__.r(__webpack_exports__);
           console.log(_this.files);
         }
       });
+    },
+    reply: function reply() {
+      var input = $("#response_to_input");
+      input.val(this.message.id);
+      var label = $("label[for=response_to_input]");
+
+      if (!label.hasClass('active')) {
+        label.addClass('active a');
+      }
+
+      this.$root.$emit('openReply');
     }
   },
   computed: {
@@ -49818,7 +49840,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("button", {
-    staticClass: "waves-effect waves-light grey darken-3 btn-large",
+    staticClass: "waves-effect waves-light grey darken-3 btn-large mb-2",
     attrs: { id: "message-creation-button" },
     domProps: { textContent: _vm._s(_vm.buttonText) },
     on: { click: _vm.creationToggle }
@@ -50019,7 +50041,8 @@ var render = function() {
           "a",
           {
             staticClass: "white-text",
-            attrs: { href: "#m-" + this.message.id }
+            attrs: { href: "#message-creation" },
+            on: { click: this.reply }
           },
           [
             _c("h5", { staticClass: "content" }, [
