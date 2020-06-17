@@ -42,11 +42,11 @@ class ThreadController extends Controller
      * @store \App\Message
      * @return \Illuminate\Contracts\Support\Renderable|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store($board_headline, Thread $thread) {
+    public function store(Request $request, $board_headline, Thread $thread) {
 
         ini_set('max_execution_time', 180);
 
-        $data_validator = Validator::make(request()->all(), [
+        $data_validator = Validator::make($request->all(), [
             // 'username' => 'required',
             'message_text' => 'required',
 //            'g-recaptcha-response' => 'required|recaptcha'
@@ -64,17 +64,17 @@ class ThreadController extends Controller
             $data = $data_validator->valid();
         }
 
-        if(null !== request('response_to')) {
-            $response_to = request()->validate([
+        if(null !== $request['response_to']) {
+            $response_to = $request->validate([
                 'response_to' => 'numeric'
             ]);
         } else {
             $response_to = [];
         }
 
-        if(null !== request('file_input')) {
+        if(null !== $request['file_input']) {
 
-            $requested_validator = Validator::make(request()->all(), [
+            $requested_validator = Validator::make($request->all(), [
                 'file_input' => 'max:3',
                 'file_input.*' => 'image|max:2000',
             ],[
@@ -95,6 +95,8 @@ class ThreadController extends Controller
         } else {
             $requested_files = ['file_input' => []];
         }
+
+//        dd($request->ip());
 
         $message_data = [
             'tid' => $thread->id,

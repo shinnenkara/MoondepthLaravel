@@ -53,4 +53,12 @@ class Message extends Model
     {
         return $this->hasMany('\App\MessageFile', "mid");
     }
+
+    /**
+     * Get the files for the defined message.
+     */
+    public function replies()
+    {
+        return $this->hasMany('\App\Message', "response_to");
+    }
 }

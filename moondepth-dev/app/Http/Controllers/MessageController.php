@@ -62,12 +62,17 @@ class MessageController extends Controller
         $user = $message->user;
         $filesPath = substr(Storage::disk('s3')->url('/'), 0, -1);
         $files = array();
+        $replies = array();
 
         if(!$message->files->isEmpty()) {
             $files = $message->files;
         }
 
-        return array('message' => $message, 'user' => $user, 'filesPath' => $filesPath, 'files' => $files);
+        if(!$message->replies->isEmpty()) {
+            $replies = $message->replies;
+        }
+
+        return array('message' => $message, 'user' => $user, 'filesPath' => $filesPath, 'files' => $files, 'replies' => $replies);
     }
 
     /**

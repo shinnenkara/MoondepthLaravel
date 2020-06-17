@@ -107,6 +107,10 @@
                     @endforeach
                 </ul>
             </ul>
+            <div class="fixed-action-btn">
+                <button id="to-top-button" class="btn-floating btn-large grey darken-4">
+                    <i class="large material-icons">arrow_drop_up</i></button>
+            </div>
         </header>
 
         <!-- Page Content -->
@@ -138,6 +142,8 @@
             <span>Made by <a class="grey-text grey-lighten-3" href="https://t.me/kara_sick">kara_sick</a></span>
         </div>
     </footer>
+
+    <!-- Additional Plugins and JavaScript -->
 
     @stack('secondary-scripts')
 </body>

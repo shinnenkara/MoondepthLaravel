@@ -2295,6 +2295,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     boardId: {
@@ -2315,7 +2323,8 @@ __webpack_require__.r(__webpack_exports__);
       message: [],
       user: [],
       filesPath: "",
-      files: []
+      files: [],
+      replies: []
     };
   },
   mounted: function mounted() {
@@ -2337,6 +2346,10 @@ __webpack_require__.r(__webpack_exports__);
           _this.files = data.files;
         }
 
+        if (Array.isArray(data.replies) && data.replies.length) {
+          _this.replies = data.replies;
+        }
+
         console.log('board: ' + _this.boardId + ' ' + 'thread: ' + _this.threadId + ' ' + 'message: ' + _this.messageId);
         console.log('message:');
         console.log(_this.message);
@@ -2346,6 +2359,11 @@ __webpack_require__.r(__webpack_exports__);
           console.log('filesPath: ' + _this.filesPath);
           console.log('files:');
           console.log(_this.files);
+        }
+
+        if (Array.isArray(_this.replies) && _this.replies.length) {
+          console.log('replies:');
+          console.log(_this.replies);
         }
       });
     },
@@ -50083,24 +50101,60 @@ var render = function() {
             ])
           : _vm._e(),
         _vm._v(" "),
-        _c("div", { staticClass: "container" }, [
-          this.message.response_to
-            ? _c("div", [
-                _c(
-                  "a",
-                  {
-                    staticClass: "white-text",
-                    attrs: { href: "#message-" + this.message.response_to }
-                  },
-                  [_c("h6", [_vm._v(_vm._s(">>" + this.message.response_to))])]
-                )
+        _c(
+          "div",
+          { staticClass: "container" },
+          [
+            _c("div", { staticClass: "message-text" }, [
+              this.message.response_to
+                ? _c("div", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "white-text",
+                        attrs: { href: "#message-" + this.message.response_to }
+                      },
+                      [
+                        _c("h6", { staticStyle: { "margin-bottom": "0px" } }, [
+                          _vm._v(_vm._s(">>" + this.message.response_to))
+                        ])
+                      ]
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("h5", [_vm._v(_vm._s(this.message.text))])
+            ]),
+            _vm._v(" "),
+            _vm._l(this.replies, function(reply, index) {
+              return _c("div", [
+                index == 0
+                  ? _c("div", [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "grey-text",
+                          attrs: { href: "#message-" + reply.id }
+                        },
+                        [_vm._v(_vm._s(">>" + reply.id))]
+                      )
+                    ])
+                  : _c("div", [
+                      _vm._v("\n                    " + _vm._s(", ")),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "grey-text",
+                          attrs: { href: "#message-" + reply.id }
+                        },
+                        [_vm._v(_vm._s(">>" + reply.id))]
+                      )
+                    ])
               ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c("div", { staticClass: "message-text" }, [
-            _c("h5", [_vm._v(_vm._s(this.message.text))])
-          ])
-        ])
+            })
+          ],
+          2
+        )
       ])
     ]
   )
@@ -62915,6 +62969,25 @@ __webpack_require__.r(__webpack_exports__);
 (function ($) {
   $(function () {
     $('.sidenav').sidenav();
+    $('#to-top-button').click(function () {
+      var scrollSpeed = 500;
+      $('html, body').animate({
+        scrollTop: 0
+      }, scrollSpeed, 'swing', function () {
+        console.log("At top");
+      });
+    }); // When the user scrolls down 20px from the top of the document, show the button
+
+    window.onscroll = function () {
+      var toTopButton = $("#to-top-button");
+
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        toTopButton.show();
+      } else {
+        toTopButton.hide();
+      }
+    };
+
     $('input#username_input, input#topic_input, textarea#subject_text_input').characterCounter();
     $(".dropdown-trigger").dropdown({
       hover: false

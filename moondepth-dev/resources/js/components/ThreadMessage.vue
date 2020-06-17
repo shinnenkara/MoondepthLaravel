@@ -16,12 +16,20 @@
                 </div>
             </div>
             <div class="container">
-                <div v-if="this.message.response_to">
-                <a class="white-text" :href="'#message-' + this.message.response_to">
-                    <h6>{{ '>>' + this.message.response_to }}</h6></a>
-                </div>
                 <div class="message-text">
+                    <div v-if="this.message.response_to">
+                        <a class="white-text" :href="'#message-' + this.message.response_to">
+                            <h6 style="margin-bottom: 0px">{{ '>>' + this.message.response_to }}</h6></a>
+                    </div>
                     <h5>{{ this.message.text }}</h5>
+                </div>
+                <div v-for="(reply, index) in this.replies">
+                    <div v-if="index == 0">
+                        <a class="grey-text" :href="'#message-' + reply.id">{{ '>>' + reply.id }}</a>
+                    </div>
+                    <div v-else>
+                        {{ ', '}}<a class="grey-text" :href="'#message-' + reply.id">{{ '>>' + reply.id }}</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -49,7 +57,8 @@
                 message: [],
                 user: [],
                 filesPath: "",
-                files: []
+                files: [],
+                replies: []
             }
         },
         mounted() {
@@ -67,6 +76,9 @@
                         this.filesPath = data.filesPath;
                         this.files = data.files;
                     }
+                    if(Array.isArray(data.replies) && data.replies.length) {
+                        this.replies = data.replies;
+                    }
 
                     console.log('board: ' + this.boardId + ' ' + 'thread: ' + this.threadId + ' ' + 'message: ' + this.messageId);
                     console.log('message:');
@@ -76,6 +88,10 @@
                         console.log('filesPath: ' + this.filesPath);
                         console.log('files:');
                         console.log(this.files);
+                    }
+                    if(Array.isArray(this.replies) && this.replies.length) {
+                        console.log('replies:');
+                        console.log(this.replies);
                     }
                 });
             },
