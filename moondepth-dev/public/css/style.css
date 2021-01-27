@@ -1,65 +1,3 @@
-/*
-1st
-
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-}
-#app {
-    flex: 1 0 auto;
-}
-*/
-
-/*
-2nd
-
-html, body {
-    height: 100%;
-    margin: 0;
-  }
-#app {
-    min-height: 100%;
-
-    // Equal to height of footer
-    // But also accounting for potential margin-bottom of last child
-    margin-bottom: -50px;
-}
-.page-footer{
-    height: 50px;
-}
-*/
-
-/*
-3rd
-html, body {
-    height: 100%;
-    margin: 0;
-}
-#app {
-    min-height: 100%;
-}
-.main {
-    padding: 20px;
-    padding-bottom: 50px;
-}
-.page-footer {
-    height: 50px;
-    margin-top: -50px;
-}
-*/
-
-/*
-4th
-
-#app {
-    min-height: calc(100vh - 182px);
-}
-.page-footer {
-    height: 182px;
-}
-*/
-
 html {
   height: 100%;
 }
@@ -216,11 +154,11 @@ a:hover, a:focus {
 .content {
     display: inline;
 }
-#board-welcome,
-#board-threads {
+#board-welcome, #board-threads {
     margin-bottom: 1.5rem;
 }
 #thread-creation-button {
+    margin-bottom: 1.5rem;
 }
 #message-creation-button {
     margin-bottom: 1.5rem;
