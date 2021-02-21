@@ -24,6 +24,17 @@
       0 => 'Fruitcake\\Cors\\CorsServiceProvider',
     ),
   ),
+  'hisorange/browser-detect' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'hisorange\\BrowserDetect\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Browser' => 'hisorange\\BrowserDetect\\Facade',
+    ),
+  ),
   'intervention/image' => 
   array (
     'providers' => 
@@ -33,6 +44,17 @@
     'aliases' => 
     array (
       'Image' => 'Intervention\\Image\\Facades\\Image',
+    ),
+  ),
+  'ivanomatteo/laravel-device-tracking' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'IvanoMatteo\\LaravelDeviceTracking\\LaravelDeviceTrackingServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'DeviceTracker' => 'IvanoMatteo\\LaravelDeviceTracking\\LaravelDeviceTrackingFacade',
     ),
   ),
   'laravel/tinker' => 
