@@ -39,7 +39,7 @@ class Board extends Model
      * @var array
      */
     protected $fillable = [
-        'amount_of_threads',
+        'amount_of_threads', 'type', 'description'
     ];
 
     /**

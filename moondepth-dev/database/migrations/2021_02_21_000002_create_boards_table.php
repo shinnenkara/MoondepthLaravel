@@ -14,10 +14,13 @@ class CreateBoardsTable extends Migration
     public function up()
     {
         Schema::create('boards', function (Blueprint $table) {
-            $table->id();
             $table->string('headline');
-            $table->unsignedInteger('amount_of_threads');
+            $table->string('type');
+            $table->string('description');
+            $table->unsignedInteger('amount_of_threads')->default(0);
             $table->timestamps();
+
+            $table->primary('headline');
         });
     }
 

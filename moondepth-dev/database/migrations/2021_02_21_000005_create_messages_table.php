@@ -15,11 +15,11 @@ class CreateMessagesTable extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tid');
-            $table->foreignId('uid');
-            $table->unsignedInteger('response_to');
+            $table->foreignId('tid')->references('id')->on('threads');;
+            $table->foreignId('uid')->references('id')->on('users');;
+            $table->unsignedInteger('response_to')->nullable();
             $table->text('text');
-            $table->unsignedInteger('amount_of_documents');
+            $table->unsignedInteger('amount_of_documents')->default(0);;
             $table->timestamps();
         });
     }

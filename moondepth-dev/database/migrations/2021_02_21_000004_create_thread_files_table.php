@@ -15,7 +15,7 @@ class CreateThreadFilesTable extends Migration
     {
         Schema::create('thread_files', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tid');
+            $table->foreignId('tid')->references('id')->on('threads');;
             $table->string('s3_path');
             $table->string('s3_full_path');
             $table->string('original_name');

@@ -15,7 +15,7 @@ class CreateMessageFilesTable extends Migration
     {
         Schema::create('message_files', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('mid');
+            $table->foreignId('mid')->references('id')->on('messages');;
             $table->string('s3_path');
             $table->string('s3_full_path');
             $table->string('original_name');

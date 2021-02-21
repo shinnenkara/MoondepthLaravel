@@ -15,13 +15,15 @@ class CreateThreadsTable extends Migration
     {
         Schema::create('threads', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('bid');
-            $table->foreignId('uid');
+            $table->string('bid');
+            $table->foreignId('uid')->references('id')->on('users');
             $table->string('topic');
             $table->text('subject_text');
-            $table->unsignedInteger('amount_of_messages');
-            $table->unsignedInteger('amount_of_documents');
+            $table->unsignedInteger('amount_of_messages')->default(0);;
+            $table->unsignedInteger('amount_of_documents')->default(0);;
             $table->timestamps();
+
+            $table->foreign('bid')->references('headline')->on('boards');
         });
     }
 
