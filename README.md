@@ -27,7 +27,7 @@ and start redis-server.exe (e.g. on port: 6379)
 
 `laravel-echo-server init`
 
-### 5. Pull .env config to ./ or creagte one from .env.example
+### 5. Pull .env config to ./ or create one from .env.example
 
 ### 6. Make sure that all is properly installed
 
