@@ -8,7 +8,7 @@ Site: https://www.moondepth.space/ (Currently unavailable)
 
 ### Pre 1. Configurate mySQL (if local) and HTTP Server
 
-### . Install redis version >2.6.*
+### Pre 2. Install redis version >2.6.*
 
 If windows environment :
 > https://github.com/microsoftarchive/redis/releases
