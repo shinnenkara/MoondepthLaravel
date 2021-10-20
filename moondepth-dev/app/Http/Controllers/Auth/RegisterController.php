@@ -76,10 +76,10 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showRegistrationForm()
+    public function index()
     {
         $boards = parent::getAllBoards();
 
-        return view('auth.register', compact('boards'));
+        return view('auth.register.index', compact('boards'));
     }
 }

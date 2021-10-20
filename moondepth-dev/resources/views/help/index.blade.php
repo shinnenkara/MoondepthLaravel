@@ -31,7 +31,7 @@
 </div>
 <div class="container">
     <h3 class="justify-text"><u>{{ config('app.name', 'Laravel') . ' — Few tips to use'}}</u></h3>
-    <ul type="disc">
+    <ul>
         <li>
             <p class="justify-text flow-text">You want something, help yourself.</p>
         </li>

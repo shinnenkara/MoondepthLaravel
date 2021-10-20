@@ -41,12 +41,12 @@ class LoginController extends Controller
     /**
      * Show the application's login form.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function showLoginForm()
+    public function index()
     {
         $boards = parent::getAllBoards();
 
-        return view('auth.login', compact('boards'));
+        return view('auth.login.index', compact('boards'));
     }
 }

@@ -52,9 +52,6 @@ main {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-#nav-mobile-button {
-    transform: translateX(0px);
-}
 #logo-container {
     display: flex;
     white-space: nowrap;
@@ -62,13 +59,21 @@ main {
     text-overflow: ellipsis;
     align-items: baseline;
 }
-#additional-links {
+.nav-extended {
+    background-color: inherit;
+    -webkit-box-shadow: inherit;
+    box-shadow: inherit;
+}
+.additional-links {
     display: flex;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 20px;
     align-items: baseline;
+}
+.input-field.inline  {
+    margin-left: 0;
 }
 .dropdown-content {
     background: #424242; /* indigo darken-3 */

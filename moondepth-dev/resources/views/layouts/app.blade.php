@@ -31,69 +31,68 @@
         <header>
             <nav id="top-nav" class="grey darken-3">
                 <div class="container">
-                    <div class="nav-wrapper">
-                        <div class="row">
-                            <div class="col s12 m8 offset-m1">
-                                <a id="nav-mobile-button" href="#" data-target="nav-mobile" class="top-nav sidenav-trigger full hide-on-large-only">
-                                    <i class="material-icons">menu</i>
-                                </a>
-                                <a id="logo-container" href="{{ route('welcome.index') }}" class="brand-logo">
-                                    <img class="hide-on-small-only" src="{{ asset('img/svg/moondepth.white.logo.svg') }}" alt="moondepth logo">
-                                    <span id="app-name">{{ config('app.name', 'Laravel') }}</span>
-                                </a>
-                            </div>
-                            <div id="additional-links" class="links hide-on-small-only hide-on-large-only col m3">
-                                <!-- Dropdown Trigger -->
-                                <a class="dropdown-trigger" href="#info-dropdown" data-target="info-dropdown">Info<i class="material-icons right">arrow_drop_down</i></a>
-                                <!-- Dropdown Structure -->
-                                <ul id='info-dropdown' class='dropdown-content'>
-                                    <li><a id="about-link" href="{{ route('about.index') }}" class="additional-link text-primary">About</a></li>
-                                    <li><a id="help-link" href="{{ route('help.index') }}" class="additional-link text-primary">Help</a></li>
-                                    <li><a id="rules-link" href="{{ route('rules.index') }}" class="additional-link text-primary">Rules</a></li>
-                                </ul>
-                            </div>
-                            <div id="additional-links" class="links hide-on-med-and-down col m5 l4 offset-l8">
-                                <a id="about-link" href="{{ route('about.index') }}" class="additional-link text-primary">About</a>
-                                <a id="help-link" href="{{ route('help.index') }}" class="additional-link text-primary">Help</a>
-                                <a id="rules-link" href="{{ route('rules.index') }}" class="additional-link text-primary">Rules</a>
-                            </div>
-
-                            {{-- <div class="hide-on-small-only" id="navbarSupportedContent">
-                                <!-- Right Side Of Navbar -->
-                                <ul class="navbar-nav ml-auto">
-                                    <!-- Authentication Links -->
+                    <nav class="nav-extended">
+                        <div class="nav-wrapper">
+                            <div class="row">
+                                <div class="col s12 m8 offset-m1">
+                                    <a id="nav-mobile-button" href="#" data-target="nav-mobile" class="top-nav sidenav-trigger full hide-on-large-only">
+                                        <i class="material-icons">menu</i>
+                                    </a>
+                                    <a id="logo-container" href="{{ route('welcome.index') }}" class="brand-logo">
+                                        <img class="hide-on-small-only" src="{{ asset('img/svg/moondepth.white.logo.svg') }}" alt="moondepth logo">
+                                        <span id="app-name">{{ config('app.name', 'Laravel') }}</span>
+                                    </a>
                                     @guest
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('login') }}">{{ __('Log In') }}</a>
-                                        </li>
-                                        @if (Route::has('register'))
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('register') }}">{{ __('Sign Up') }}</a>
-                                            </li>
-                                        @endif
+                                        <a href="{{ route('auth.login.index') }}" class="top-nav-text top-nav right hide-on-large-only hide-on-extra-large-only">
+                                            {{--<span>Login</span>--}}
+                                            <i class="material-icons">login</i>
+                                        </a>
                                     @else
-                                        <li class="nav-item dropdown">
-                                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                                {{ Auth::user()->name }} <span class="caret"></span>
-                                            </a>
-
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
-                                                                document.getElementById('logout-form').submit();">
-                                                    {{ __('Log Out') }}
-                                                </a>
-
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                    @csrf
-                                                </form>
-                                            </div>
-                                        </li>
+                                        <a href="#" class="top-nav-text top-nav right hide-on-large-only hide-on-extra-large-only">
+                                            {{--<span>Profile</span>--}}
+                                            <i class="material-icons">person</i>
+                                        </a>
                                     @endguest
-                                </ul>
-                            </div> --}}
+                                </div>
+                                <div class="links additional-links hide-on-small-only hide-on-large-only hide-on-extra-large-only col m3">
+                                    <!-- Dropdown Trigger -->
+                                    <a class="dropdown-trigger" href="#info-dropdown" data-target="info-dropdown">
+                                        <span>Info</span>
+                                        <i class="material-icons right">arrow_drop_down</i>
+                                    </a>
+                                    <!-- Dropdown Structure -->
+                                    <ul id='info-dropdown' class='dropdown-content'>
+                                        <li><a id="about-link" href="{{ route('about.index') }}" class="additional-link text-primary">About</a></li>
+                                        <li><a id="help-link" href="{{ route('help.index') }}" class="additional-link text-primary">Help</a></li>
+                                        <li><a id="rules-link" href="{{ route('rules.index') }}" class="additional-link text-primary">Rules</a></li>
+                                    </ul>
+                                </div>
+                                <div class="links additional-links hide-on-med-and-down col m5 l5 offset-l7">
+                                    @guest
+                                        <a id="rules-link" href="{{ route('auth.login.index') }}" class="additional-link text-primary">Login</a>
+                                    @else
+                                        <a id="rules-link" href="#" class="additional-link text-primary">Profile</a>
+                                    @endguest
+                                    <a id="about-link" href="{{ route('about.index') }}" class="additional-link text-primary">About</a>
+                                    <a id="help-link" href="{{ route('help.index') }}" class="additional-link text-primary">Help</a>
+                                    <a id="rules-link" href="{{ route('rules.index') }}" class="additional-link text-primary">Rules</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+{{--                        <div class="nav-content hide-on-med-and-up">--}}
+{{--                            <ul class="tabs tabs-transparent">--}}
+{{--                                <li class="tab">--}}
+{{--                                    <a id="about-link" href="{{ route('about.index') }}" class="additional-link text-primary">About</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="tab">--}}
+{{--                                    <a id="help-link" href="{{ route('help.index') }}" class="additional-link text-primary">Help</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="tab">--}}
+{{--                                    <a id="rules-link" href="{{ route('rules.index') }}" class="additional-link text-primary">Rules</a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+                    </nav>
                 </div>
             </nav>
             <ul id="nav-mobile" class="sidenav sidenav-fixed">
