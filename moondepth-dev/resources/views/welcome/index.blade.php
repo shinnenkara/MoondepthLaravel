@@ -40,7 +40,7 @@
             </div>
         </form>
         <div class="col s12 m6 l4">
-            <h2><i>Big Board:</i></h2><br/>
+            <h2><i>Big Board: </i></h2><br/>
             <a href="{{ route('board.show', ['board' => $big_board->headline]) }}" class="text-primary">/{{ $big_board->headline }}/ - {{ $big_board->description }}</a>
         </div>
         <div class="col s12 m6 l4">

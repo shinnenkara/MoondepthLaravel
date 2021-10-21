@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use App\Models\Board;
 use App\Models\Thread;
@@ -85,9 +86,14 @@ class BoardController extends Controller
             $requested_files = ['file_input' => []];
         }
 
+        $userId = Auth::id();
+        if(!isset($userId)) {
+            $userId = 1;
+        }
+
         $thread = Thread::create([
             'bid' => $board->headline,
-            'uid' => 1,
+            'uid' => $userId,
             'topic' => $data['topic'],
             'subject_text' => $data['subject_text']
         ]);

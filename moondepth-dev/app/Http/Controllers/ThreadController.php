@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\NewMessage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use App\Models\Thread;
 use App\Models\Message;
@@ -96,9 +97,14 @@ class ThreadController extends Controller
 
 //        dd($request->ip());
 
+        $userId = Auth::id();
+        if(!isset($userId)) {
+            $userId = 1;
+        }
+
         $message_data = [
             'tid' => $thread->id,
-            'uid' => 1,
+            'uid' => $userId,
             'text' => $data['message_text']
         ];
 

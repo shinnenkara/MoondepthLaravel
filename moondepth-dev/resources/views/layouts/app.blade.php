@@ -48,7 +48,8 @@
                                             <i class="material-icons">login</i>
                                         </a>
                                     @else
-                                        <a href="#" class="top-nav-text top-nav right hide-on-large-only hide-on-extra-large-only">
+                                        <a class="top-nav-text top-nav right hide-on-large-only hide-on-extra-large-only"
+                                            href="{{ route('user.show', ['username' => Auth::user()->username]) }}">
                                             {{--<span>Profile</span>--}}
                                             <i class="material-icons">person</i>
                                         </a>

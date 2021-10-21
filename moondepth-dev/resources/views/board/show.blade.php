@@ -148,7 +148,7 @@
                     <i class="material-icons hidethread-icons content">arrow_drop_down</i>
                     <a class="white-text" href="{{ route('thread.show', ['board' => $thread->board->headline, 'thread' => $thread->id]) }}">
                         <h5 class="content"><strong>{{ $thread->topic }}</strong></h5>
-                        <h5 class="content grey-text text-lighten-1">{{ mb_strtoupper(mb_substr($thread->user->username, 0, 1)).mb_substr($thread->user->username, 1) }}</h5>
+                        <h5 class="content grey-text text-lighten-1">{{ $thread->user->username }}</h5>
                         <h5 class="content">{{ $thread->created_at }}</h5>
                         <h5 class="content">No. {{ $thread->id }}</h5>
                     </a>
@@ -181,7 +181,7 @@
                     <div class="message col l11 m11 s12">
                         <div class="message-head">
                             <i class="material-icons hidemessage-icons">arrow_drop_down</i>
-                            <h5 class="content grey-text text-lighten-1">{{ mb_strtoupper(mb_substr($message->user->username, 0, 1)).mb_substr($message->user->username, 1) }}</h5>
+                            <h5 class="content grey-text text-lighten-1">{{ $thread->user->username }}</h5>
                             <h5 class="content">{{ $message->created_at }}</h5>
                             <a class="white-text" href="{{ route('thread.show', ['board' => $thread->board->headline, 'thread' => $thread->id]) }}">
                                 <h5 class="content">No. {{ $message->id }}</h5></a>

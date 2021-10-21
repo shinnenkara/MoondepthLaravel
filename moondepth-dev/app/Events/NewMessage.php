@@ -2,8 +2,8 @@
 
 namespace App\Events;
 
-use App\Message;
-use App\Thread;
+use App\Models\Message;
+use App\Models\Thread;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
