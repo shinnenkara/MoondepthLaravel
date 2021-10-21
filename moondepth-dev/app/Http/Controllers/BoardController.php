@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
-use App\Board;
-use App\Thread;
-use App\ThreadFile;
+use App\Models\Board;
+use App\Models\Thread;
+use App\Models\ThreadFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -35,7 +35,7 @@ class BoardController extends Controller
     /**
      * Store the new application thread and redirect to @show.
      *
-     * @store \App\Thread
+     * @store \App\Models\Thread
      * @return \Illuminate\Contracts\Support\Renderable|\Illuminate\Http\RedirectResponse
      */
     public function store(Board $board) {

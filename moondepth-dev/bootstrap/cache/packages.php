@@ -57,6 +57,13 @@
       'DeviceTracker' => 'IvanoMatteo\\LaravelDeviceTracking\\LaravelDeviceTrackingFacade',
     ),
   ),
+  'laravel/breeze' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Breeze\\BreezeServiceProvider',
+    ),
+  ),
   'laravel/tinker' => 
   array (
     'providers' => 

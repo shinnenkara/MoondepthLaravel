@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Board;
+use App\Models\Board;
 
 class RulesController extends Controller
 {

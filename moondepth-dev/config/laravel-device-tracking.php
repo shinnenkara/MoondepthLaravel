@@ -4,7 +4,7 @@
 use IvanoMatteo\LaravelDeviceTracking\DeviceHijackingDetectorDefault;
 
 return [
-    // if user_model is null, will be probed: App\Model\User and then App\User
+    // if user_model is null, will be probed: App\Model\User and then App\Models\User
     'user_model' => null,
 
     'detect_on_login' => true,

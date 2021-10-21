@@ -1,5 +1,14 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BoardController;
+use App\Http\Controllers\HelpController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\RulesController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\ThreadController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,27 +22,41 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
+require __DIR__.'/auth.php';
 
-Route::get('/login', 'Auth\LoginController@index')->name('auth.login.index');
-Route::get('/register', 'Auth\RegisterController@index')->name('auth.register.index');
+Route::get('/', [WelcomeController::class, 'index'])
+    ->name('welcome.index');
 
-Route::get('/', 'WelcomeController@index')->name('welcome.index');
+Route::get('/about', [AboutController::class, 'index'])
+    ->name('about.index');
+Route::get('/help', [HelpController::class, 'index'])
+    ->name('help.index');
+Route::get('/rules', [RulesController::class, 'index'])
+    ->name('rules.index');
 
-Route::get('/about', 'AboutController@index')->name('about.index');
-Route::get('/help', 'HelpController@index')->name('help.index');
-Route::get('/rules', 'RulesController@index')->name('rules.index');
+Route::get('/search', [SearchController::class, 'back'])
+    ->name('search.back');
+Route::post('/search', [SearchController::class, 'index'])
+    ->name('search.index');
 
-Route::get('/search', 'SearchController@back')->name('search.back');
-Route::post('/search', 'SearchController@index')->name('search.index');
+Route::get('/board/{board}', [BoardController::class, 'show'])
+    ->name('board.show');
+Route::post('/board/{board}', [BoardController::class, 'store'])
+    ->name('board.store');
 
-Route::get('/board/{board}', 'BoardController@show')->name('board.show');
-Route::post('/board/{board}', 'BoardController@store')->name('board.store');
+Route::get('/board/{board}/thread/{thread}', [ThreadController::class, 'show'])
+    ->name('thread.show');
+Route::post('/board/{board}/thread/{thread}', [ThreadController::class, 'store'])
+    ->name('thread.store');
 
-Route::get('/board/{board}/thread/{thread}', 'ThreadController@show')->name('thread.show');
-Route::post('/board/{board}/thread/{thread}', 'ThreadController@store')->name('thread.store');
+Route::post('/board/{board}/thread/{thread}/event/new-message', [ThreadController::class, 'newMessageEvent'])
+    ->name('thread.event.new-message');
 
-Route::post('/board/{board}/thread/{thread}/message/all', 'MessageController@all')->name('message.all');
-Route::post('/board/{board}/thread/{thread}/message/{message}/get', 'MessageController@get')->name('message.get');
+Route::post('/board/{board}/thread/{thread}/message/all', [MessageController::class, 'all'])
+    ->name('message.all');
+Route::post('/board/{board}/thread/{thread}/message/{message}/get', [MessageController::class, 'get'])
+    ->name('message.get');
 
-Route::post('/board/{board}/thread/{thread}/event/new-message', 'ThreadController@newMessageEvent')->name('thread.event.new-message');
+Route::get('/user/{username}', [UserController::class, 'show'])
+    ->middleware('auth')
+    ->name('user.show');

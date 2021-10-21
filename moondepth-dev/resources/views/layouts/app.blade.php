@@ -43,7 +43,7 @@
                                         <span id="app-name">{{ config('app.name', 'Laravel') }}</span>
                                     </a>
                                     @guest
-                                        <a href="{{ route('auth.login.index') }}" class="top-nav-text top-nav right hide-on-large-only hide-on-extra-large-only">
+                                        <a href="{{ route('login') }}" class="top-nav-text top-nav right hide-on-large-only hide-on-extra-large-only">
                                             {{--<span>Login</span>--}}
                                             <i class="material-icons">login</i>
                                         </a>
@@ -69,9 +69,10 @@
                                 </div>
                                 <div class="links additional-links hide-on-med-and-down col m5 l5 offset-l7">
                                     @guest
-                                        <a id="rules-link" href="{{ route('auth.login.index') }}" class="additional-link text-primary">Login</a>
+                                        <a id="rules-link" href="{{ route('login') }}" class="additional-link text-primary">Login</a>
                                     @else
-                                        <a id="rules-link" href="#" class="additional-link text-primary">Profile</a>
+                                        <a id="rules-link" class="additional-link text-primary"
+                                           href="{{ route('user.show', ['username' => Auth::user()->username]) }}">Profile</a>
                                     @endguest
                                     <a id="about-link" href="{{ route('about.index') }}" class="additional-link text-primary">About</a>
                                     <a id="help-link" href="{{ route('help.index') }}" class="additional-link text-primary">Help</a>

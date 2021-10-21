@@ -5,14 +5,12 @@ namespace App\Http\Controllers;
 use App\Events\NewMessage;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
-use App\Thread;
-use App\Message;
-use App\MessageFile;
+use App\Models\Thread;
+use App\Models\Message;
+use App\Models\MessageFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use App\Mail\UserResponseMail;
-use Illuminate\Support\Facades\Mail;
-use App\User;
+use App\Models\User;
 
 class ThreadController extends Controller
 {
@@ -39,7 +37,7 @@ class ThreadController extends Controller
     /**
      * Store the new application message and redirect to @show.
      *
-     * @store \App\Message
+     * @store \App\Models\Message
      * @return \Illuminate\Contracts\Support\Renderable|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Request $request, $board_headline, Thread $thread) {
@@ -144,9 +142,6 @@ class ThreadController extends Controller
 
 //        $thread = Thread::find(['id' => $thread]);
 
-        // Mailable
-        // Mail::to(User::all()->first()->email)->send(new UserResponseMail());
-
         $boards = parent::getAllBoards();
 
         return view('thread.show', compact('boards', 'thread'));
@@ -155,7 +150,7 @@ class ThreadController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Thread  $thread
+     * @param  \App\Models\Thread  $thread
      * @return \Illuminate\Http\Response
      */
     public function edit(Thread $thread)
@@ -167,7 +162,7 @@ class ThreadController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Thread  $thread
+     * @param  \App\Models\Thread  $thread
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Thread $thread)
@@ -178,7 +173,7 @@ class ThreadController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Thread  $thread
+     * @param  \App\Models\Thread  $thread
      * @return \Illuminate\Http\Response
      */
     public function destroy(Thread $thread)
