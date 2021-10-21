@@ -27,7 +27,14 @@ class ThreadFile extends Model
      * @var array
      */
     protected $fillable = [
-        'tid', 's3_path', 's3_full_path', 'original_name', 'mime_type', 'size', 'width', 'height'
+        'tid',
+        's3_path',
+        's3_full_path',
+        'original_name',
+        'mime_type',
+        'size',
+        'width',
+        'height'
     ];
 
     /**
@@ -35,6 +42,6 @@ class ThreadFile extends Model
      */
     public function thread()
     {
-        return $this->belongsTo('\App\Thread', 'tid');
+        return $this->belongsTo(Thread::class, 'tid');
     }
 }

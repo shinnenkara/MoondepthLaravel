@@ -27,7 +27,12 @@ class Thread extends Model
      * @var array
      */
     protected $fillable = [
-        'bid', 'uid', 'topic', 'subject_text', 'amount_of_messages', 'amount_of_documents',
+        'bid',
+        'uid',
+        'topic',
+        'subject_text',
+        'amount_of_messages',
+        'amount_of_documents',
     ];
 
     /**
@@ -35,7 +40,7 @@ class Thread extends Model
      */
     public function board()
     {
-        return $this->belongsTo('\App\Board', 'bid');
+        return $this->belongsTo(Board::class, 'bid');
     }
 
     /**
@@ -43,7 +48,7 @@ class Thread extends Model
      */
     public function user()
     {
-        return $this->belongsTo('\App\Models\User', 'uid');
+        return $this->belongsTo(User::class, 'uid');
     }
 
     /**
@@ -51,7 +56,7 @@ class Thread extends Model
      */
     public function messages()
     {
-        return $this->hasMany('\App\Message', "tid");
+        return $this->hasMany(Message::class, "tid");
     }
 
     /**
@@ -59,6 +64,6 @@ class Thread extends Model
      */
     public function files()
     {
-        return $this->hasMany('\App\ThreadFile', "tid");
+        return $this->hasMany(ThreadFile::class, "tid");
     }
 }

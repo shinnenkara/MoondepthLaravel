@@ -41,7 +41,11 @@
                         class="white-text form-control @error('username') is-invalid @enderror"
                         type="text"
                         name="username"
-                        value="Anonymous"
+                        @guest
+                           value="anonymous"
+                        @else
+                           value="{{ Auth::user()->username }}"
+                        @endguest
                         required
                         data-length="20"
                         autocomplete="username"

@@ -27,7 +27,11 @@ class Message extends Model
      * @var array
      */
     protected $fillable = [
-        'tid', 'uid', 'response_to', 'text', 'amount_of_documents',
+        'tid',
+        'uid',
+        'response_to',
+        'text',
+        'amount_of_documents',
     ];
 
     /**
@@ -35,7 +39,7 @@ class Message extends Model
      */
     public function thread()
     {
-        return $this->belongsTo('\App\Thread', 'tid');
+        return $this->belongsTo(Thread::class, 'tid');
     }
 
     /**
@@ -43,7 +47,7 @@ class Message extends Model
      */
     public function user()
     {
-        return $this->belongsTo('\App\Models\User', 'uid');
+        return $this->belongsTo(User::class, 'uid');
     }
 
     /**
@@ -51,7 +55,7 @@ class Message extends Model
      */
     public function files()
     {
-        return $this->hasMany('\App\MessageFile', "mid");
+        return $this->hasMany(MessageFile::class, "mid");
     }
 
     /**
@@ -59,6 +63,6 @@ class Message extends Model
      */
     public function replies()
     {
-        return $this->hasMany('\App\Message', "response_to");
+        return $this->hasMany(Message::class, "response_to");
     }
 }

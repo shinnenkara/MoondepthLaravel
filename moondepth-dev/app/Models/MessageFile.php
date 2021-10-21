@@ -27,7 +27,14 @@ class MessageFile extends Model
      * @var array
      */
     protected $fillable = [
-        'mid', 's3_path', 's3_full_path', 'original_name', 'mime_type', 'size', 'width', 'height'
+        'mid',
+        's3_path',
+        's3_full_path',
+        'original_name',
+        'mime_type',
+        'size',
+        'width',
+        'height'
     ];
 
     /**
@@ -35,6 +42,6 @@ class MessageFile extends Model
      */
     public function message()
     {
-        return $this->belongsTo('\App\Message', 'mid');
+        return $this->belongsTo(Message::class, 'mid');
     }
 }

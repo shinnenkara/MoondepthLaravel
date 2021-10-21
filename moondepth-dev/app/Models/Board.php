@@ -39,7 +39,9 @@ class Board extends Model
      * @var array
      */
     protected $fillable = [
-        'amount_of_threads', 'type', 'description'
+        'amount_of_threads',
+        'type',
+        'description'
     ];
 
     /**
@@ -47,6 +49,6 @@ class Board extends Model
      */
     public function threads()
     {
-        return $this->hasMany('\App\Thread', "bid");
+        return $this->hasMany(Thread::class, "bid");
     }
 }
