@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 require __DIR__.'/auth.php';
+require __DIR__.'/webauthn.php';
 
 Route::get('/', [WelcomeController::class, 'index'])
     ->name('welcome.index');

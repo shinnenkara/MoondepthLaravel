@@ -66,7 +66,8 @@ return [
 
     'providers' => [
         'users' => [
-            'driver' => 'eloquent',
+            // 'driver' => 'eloquent', // Default Eloquent User Provider
+            'driver' => 'eloquent-webauthn',
             'model' => App\Models\User::class,
         ],
 
@@ -101,6 +102,15 @@ return [
             'email' => 'auth.emails.password',
             'table' => 'password_resets',
             'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        // New for WebAuthn
+        'webauthn' => [
+            'provider' => 'users', // The user provider using WebAuthn.
+            'table' => 'web_authn_recoveries', // The table to store the recoveries.
+            'expire' => 60,
+            'throttle' => 60,
         ],
     ],
 

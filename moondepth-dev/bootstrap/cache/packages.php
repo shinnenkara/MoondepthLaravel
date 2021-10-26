@@ -1,4 +1,11 @@
 <?php return array (
+  'darkghosthunter/larapass' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'DarkGhostHunter\\Larapass\\LarapassServiceProvider',
+    ),
+  ),
   'facade/ignition' => 
   array (
     'providers' => 
