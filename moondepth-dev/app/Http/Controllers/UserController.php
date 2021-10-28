@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
+use function Sodium\add;
 
 class UserController extends Controller
 {
@@ -44,11 +47,31 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(string $username)
     {
         $boards = parent::getAllBoards();
 
-        return view('user.index', compact('boards'));
+        $user = User::where('username', $username) -> first();
+        if(isset($user) == false) return abort(404);
+
+        $webAuthn_credentials = $user->webAuthnCredentials()->get()->all();
+
+        $credentials = array();
+        foreach ($webAuthn_credentials as $webAuthn_credential) {
+            $json_credential = $webAuthn_credential->jsonSerialize();
+            array_push($credentials, $json_credential);
+        }
+
+        $user_devices = $user->device()->get()->all();
+
+        $devices = array();
+        foreach ($user_devices as $user_device) {
+            if($user_device['ip'] == "::1") continue;
+            $json_device = $user_device->jsonSerialize();
+            array_push($devices, $json_device);
+        }
+
+        return view('user.show')->with(compact('boards', 'user', 'credentials', 'devices'));
     }
 
     /**

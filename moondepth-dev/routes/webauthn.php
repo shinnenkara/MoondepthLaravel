@@ -14,6 +14,8 @@ Route::post('webauthn/register', [WebAuthnRegisterController::class, 'register']
 Route::post('webauthn/register/options', [WebAuthnRegisterController::class, 'options'])
     ->name('webauthn.register.options');
 
+Route::get('webauthn/login', [WebAuthnLoginController::class, 'showWebAuthnLoginForm'])
+    ->name('webauthn.login.form');
 Route::post('webauthn/login', [WebAuthnLoginController::class, 'login'])
     ->name('webauthn.login');
 Route::post('webauthn/login/options', [WebAuthnLoginController::class, 'options'])

@@ -31,7 +31,7 @@ class WebAuthnRegisterController extends Controller
     }
 
     /**
-     * Display the password confirmation view.
+     * Display the credential registration view.
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
      */
