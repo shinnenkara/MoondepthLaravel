@@ -1,4 +1,4 @@
-@extends('larapass::layout')
+@extends('layouts.webauthn')
 
 @section('title', trans('larapass::recovery.title'))
 

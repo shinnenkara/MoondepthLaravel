@@ -1,4 +1,4 @@
-@extends('larapass::layout')
+@extends('layouts.webauthn')
 
 @section('title', __('Authenticator registration'))
 
@@ -31,7 +31,8 @@
                 })
                 .catch(response => {
                     alert('Something went wrong, try again!');
-                    console.error('Registration unsuccessful.', response);
+                    console.error('Registration unsuccessful.');
+                    console.error(response);
                 });
         }
 

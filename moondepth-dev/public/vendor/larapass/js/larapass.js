@@ -305,7 +305,7 @@ class Larapass {
     async register(data = {}, headers = {}) {
         const optionsResponse = await this.fetch(data, this.routes.registerOptions);
         const json = await optionsResponse.json();
-        // console.log(json);
+        console.log(json);
         const publicKey = this.parseIncomingServerOptions(json);
         // console.log(publicKey);
         const credentials = await navigator.credentials.create({

@@ -44,4 +44,14 @@ class User extends Authenticatable implements WebAuthnAuthenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    /**
+     * Return name attribute for larapass reference purposes
+     *
+     * @return string
+     */
+    protected function getNameAttribute() {
+        return $this->username;
+    }
 }
