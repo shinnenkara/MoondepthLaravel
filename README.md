@@ -1,8 +1,10 @@
 # MoondepthLaravel
 
-Imageboard based on Laravel framework.
+Imageboard.
 
 Site: https://www.moondepth.space/ (Currently unavailable)
+
+Based on Laravel framework
 
 ## Dev config
 
